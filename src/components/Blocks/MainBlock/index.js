@@ -2,6 +2,8 @@ import React from 'react';
 import {SafeAreaView, View} from 'react-native';
 import EStyleSheet from 'react-native-extended-stylesheet';
 
+import {scaledSize} from '../../../styles';
+
 const MainBlock = ({children, blockContainer}) => (
   <View style={styles.container}>
     <SafeAreaView style={styles.container}>
@@ -17,6 +19,7 @@ const styles = EStyleSheet.create({
   },
   bContainer: {
     flex: 1,
+    paddingHorizontal: scaledSize(82),
   },
 });
 

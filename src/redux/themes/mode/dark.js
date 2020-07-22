@@ -1,6 +1,6 @@
 export default {
   $theme: 'dark',
-  $background: '#000000',
+  $background: '#1d2c3f',
   $text: '#12253c',
   $headerBackground: 'red',
   $buttonBackground: '#ea9e6c',
