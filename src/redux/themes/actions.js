@@ -3,14 +3,17 @@ import * as types from './types';
 
 import dark from './mode/dark';
 import light from './mode/light';
+import {StatusBar} from 'react-native';
 
 const themes = {
   dark: dark,
   light: light,
 };
 
-export const changeThemeMode = name => {
+export const changeThemeMode = (name) => {
   const theme = themes[name];
+
+  StatusBar.setBarStyle(name === 'light' ? 'dark-content' : 'light-content');
 
   EStyleSheet.build(theme);
 

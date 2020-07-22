@@ -6,6 +6,7 @@ export default EStyleSheet.create({
   bottomContainer: {
     justifyContent: 'center',
     alignItems: 'center',
+    marginVertical: scaledSize(20),
   },
   row: {
     flexDirection: 'row',

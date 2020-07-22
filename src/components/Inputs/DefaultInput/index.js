@@ -9,6 +9,7 @@ const DefaultInput = ({...props}) => (
     {...props}
     renderErrorMessage={false}
     placeholderTextColor="#0b1e35"
+    inputStyle={styles.inpStyle}
     inputContainerStyle={styles.inpContainer}
     containerStyle={styles.container}
   />

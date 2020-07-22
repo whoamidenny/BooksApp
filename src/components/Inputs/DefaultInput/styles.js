@@ -1,5 +1,6 @@
 import EStyleSheet from 'react-native-extended-stylesheet';
 import {scaledSize} from '../../../styles';
+import fonts from '../../../constants/fonts';
 
 export default EStyleSheet.create({
   inpContainer: {
@@ -15,5 +16,9 @@ export default EStyleSheet.create({
     paddingHorizontal: 0,
     marginVertical: scaledSize(30),
     //borderBottomWidth: 0,
+  },
+  inpStyle: {
+    fontFamily: fonts.circeRegular,
+    fontSize: scaledSize(46),
   },
 });
