@@ -8,4 +8,9 @@ export default EStyleSheet.create({
     fontSize: scaledSize(60),
     color: '$headerText',
   },
+  regularText: {
+    fontFamily: fonts.circeRegular,
+    fontSize: scaledSize(46),
+    color: '$headerText',
+  },
 });

@@ -9,6 +9,7 @@ import store from './redux';
 import setI18nConfig from './i18n';
 
 import light from './redux/themes/mode/light';
+import {StatusBar} from 'react-native';
 
 class App extends Component {
   constructor(props) {

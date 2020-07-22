@@ -6,6 +6,7 @@ import Auth from '../screens/Auth/Auth';
 import SignIn from '../screens/Auth/SignIn';
 import SignUp from '../screens/Auth/SignUp';
 import {scaledSize} from '../styles';
+import ForgetPassword from '../screens/Auth/ForgetPassword';
 
 const Stack = createStackNavigator();
 
@@ -19,6 +20,7 @@ export default function AuthStack() {
         headerStyle: {
           backgroundColor: theme.$background,
           shadowColor: 'transparent',
+          elevation: 0,
         },
         headerLeftContainerStyle: {
           marginLeft: scaledSize(60),
@@ -34,6 +36,7 @@ export default function AuthStack() {
       />
       <Stack.Screen name="SignIn" component={SignIn} />
       <Stack.Screen name="SignUp" component={SignUp} />
+      <Stack.Screen name="ForgetPassword" component={ForgetPassword} />
     </Stack.Navigator>
   );
 }

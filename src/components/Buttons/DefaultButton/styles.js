@@ -8,8 +8,9 @@ export default EStyleSheet.create({
     fontSize: scaledSize(54),
   },
   btnContainer: {
-    height: 50,
-    borderRadius: 25,
+    height: scaledSize(160),
+    borderRadius: scaledSize(80),
+
     backgroundColor: '$buttonBackground',
   },
 });

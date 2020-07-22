@@ -14,6 +14,7 @@ export const changeThemeMode = (name) => {
   const theme = themes[name];
 
   StatusBar.setBarStyle(name === 'light' ? 'dark-content' : 'light-content');
+  StatusBar.setBackgroundColor(name === 'light' ? '#f1f9ff' : '#1d2c3f');
 
   EStyleSheet.build(theme);
 

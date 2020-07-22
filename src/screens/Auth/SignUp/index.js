@@ -3,13 +3,14 @@ import React from 'react';
 import {View, Text} from 'react-native';
 import {DefaultButton} from '../../../components/Buttons';
 import {MainBlock} from '../../../components/Blocks';
+import {DefaultInput} from '../../../components/Inputs';
 
-import SignUpIcon from '../../../assets/images/signup.svg';
 import {scaledSize} from '../../../styles';
 
 import styles from './styles';
 import globalStyles from '../../../styles/globalStyles';
-import {DefaultInput} from '../../../components/Inputs';
+
+import SignUpIcon from '../../../assets/images/signup.svg';
 
 function SignUp() {
   return (

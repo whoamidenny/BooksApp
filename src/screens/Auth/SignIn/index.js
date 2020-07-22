@@ -12,7 +12,10 @@ import globalStyles from '../../../styles/globalStyles';
 import {DefaultInput} from '../../../components/Inputs';
 import {DefaultCheckBox} from '../../../components/CheckBoxes';
 
-function SignIn() {
+function SignIn({navigation}) {
+  function onPressForgetPassword() {
+    navigation.navigate('ForgetPassword');
+  }
   return (
     <MainBlock>
       <View style={styles.mainBlock}>
@@ -22,7 +25,9 @@ function SignIn() {
           <DefaultInput placeholder="Password" />
           <View style={styles.row}>
             <DefaultCheckBox checked title="Stay Logged In" />
-            <Text style={styles.regularText}>Forgot Your Password</Text>
+            <Text style={styles.regularText} onPress={onPressForgetPassword}>
+              Forgot Your Password
+            </Text>
           </View>
           <DefaultButton
             title="Login"
