@@ -8,7 +8,7 @@ const DefaultButton = ({...props}) => (
     {...props}
     titleStyle={styles.btnTitle}
     buttonStyle={styles.btnContainer}
-    containerStyle={styles.containerStyle}
+    containerStyle={[styles.containerStyle, props.containerStyle]}
   />
 );
 

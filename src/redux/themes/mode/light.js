@@ -6,5 +6,6 @@ export default {
   $buttonBackground: '#ea9e6c',
   $link: '#59a5ff',
   $headerText: '#0a1d36',
-  $inputBorder: '#e7f1f6',
+  $inputBorder: '#e8f1f6',
+  $backButton: '#0b1e35',
 };

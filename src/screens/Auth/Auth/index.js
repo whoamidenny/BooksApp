@@ -12,13 +12,21 @@ import {themeActions} from '../../../redux/themes';
 import Logo from '../../../assets/images/logo.svg';
 import {scaledSize} from '../../../styles';
 
-function Auth() {
+function Auth({navigation}) {
   const [isActive, changeTheme] = useState(false);
   const dispatch = useDispatch();
   useEffect(() => {
     const themeName = isActive ? 'dark' : 'light';
     dispatch(themeActions.changeThemeMode(themeName));
   }, [isActive]);
+
+  function onPressLogin() {
+    navigation.navigate('SignIn');
+  }
+
+  function onPressSignUp() {
+    navigation.navigate('SignUp');
+  }
 
   return (
     <MainBlock>
@@ -29,9 +37,12 @@ function Auth() {
         <Logo height={scaledSize(695)} width={scaledSize(500)} />
       </View>
       <View style={styles.bottomBlock}>
-        <DefaultButton title="Get Started" />
+        <DefaultButton title="Get Started" onPress={onPressSignUp} />
         <Text style={styles.hintText}>
-          Already have an account? <Text style={styles.linkText}>Log in</Text>
+          Already have an account?{' '}
+          <Text style={styles.linkText} onPress={onPressLogin}>
+            Log in
+          </Text>
         </Text>
       </View>
     </MainBlock>
