@@ -12,7 +12,11 @@ import globalStyles from '../../../styles/globalStyles';
 
 import SignUpIcon from '../../../assets/images/signup.svg';
 
-function SignUp() {
+function SignUp({navigation}) {
+  function onPressRegister() {
+    navigation.navigate('Onboarding');
+  }
+
   return (
     <MainBlock>
       <View style={styles.mainBlock}>
@@ -25,6 +29,7 @@ function SignUp() {
           <DefaultButton
             title="Register"
             containerStyle={{marginVertical: scaledSize(55)}}
+            onPress={onPressRegister}
           />
         </View>
         <Text style={[styles.regularText, {textAlign: 'center'}]}>or</Text>

@@ -7,6 +7,7 @@ import SignIn from '../screens/Auth/SignIn';
 import SignUp from '../screens/Auth/SignUp';
 import {scaledSize} from '../styles';
 import ForgetPassword from '../screens/Auth/ForgetPassword';
+import Onboarding from '../screens/Onboarding';
 
 const Stack = createStackNavigator();
 
@@ -37,6 +38,14 @@ export default function AuthStack() {
       <Stack.Screen name="SignIn" component={SignIn} />
       <Stack.Screen name="SignUp" component={SignUp} />
       <Stack.Screen name="ForgetPassword" component={ForgetPassword} />
+      <Stack.Screen
+        name="Onboarding"
+        component={Onboarding}
+        options={{
+          headerShown: false,
+          gestureEnabled: false,
+        }}
+      />
     </Stack.Navigator>
   );
 }
