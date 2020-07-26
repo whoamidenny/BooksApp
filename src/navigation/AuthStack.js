@@ -1,4 +1,5 @@
 import React from 'react';
+import {Text, View} from 'react-native';
 import {createStackNavigator} from '@react-navigation/stack';
 import {useSelector} from 'react-redux';
 
@@ -8,6 +9,8 @@ import SignUp from '../screens/Auth/SignUp';
 import {scaledSize} from '../styles';
 import ForgetPassword from '../screens/Auth/ForgetPassword';
 import Onboarding from '../screens/Onboarding';
+import Preload from '../screens/Preload';
+import globalStyles from '../styles/globalStyles';
 
 const Stack = createStackNavigator();
 
@@ -24,7 +27,8 @@ export default function AuthStack() {
           elevation: 0,
         },
         headerLeftContainerStyle: {
-          marginLeft: scaledSize(60),
+          marginHorizontal: scaledSize(60),
+          //marginRight: scaledSize(60),
         },
         headerTintColor: theme.$backButton,
       }}>
@@ -44,6 +48,17 @@ export default function AuthStack() {
         options={{
           headerShown: false,
           gestureEnabled: false,
+        }}
+      />
+      <Stack.Screen
+        name="Preload"
+        component={Preload}
+        options={{
+          headerRight: () => (
+            <View style={{marginRight: scaledSize(60)}}>
+              <Text style={globalStyles.headerSmallText}>SKIP</Text>
+            </View>
+          ),
         }}
       />
     </Stack.Navigator>

@@ -11,42 +11,49 @@ import styles, {screenStyles, paginationStyle} from './styles';
 import {scaledSize} from '../../styles';
 import globalStyles from '../../styles/globalStyles';
 
-const screens = [
-  {
-    id: 0,
-    title: 'Smart book filter',
-    description:
-      'Sed ut perspiciatis, unde omnis iste natus error sit voluptatem accusantium, totam rem aperiam eaque ipsa, quae ab illo inventore veritatis et quasi architecto beataet.',
-    icon: <Screen1Icon height={scaledSize(872)} width={scaledSize(945)} />,
-  },
-  {
-    id: 1,
-    title: 'Dark and white theme',
-    description:
-      'Nemo enim ipsam voluptatem, quia sit, aspernatur aut odit aut fugit, sed corporis quia consequuntur magni dolores eos, qui ratione voluptatem sequi nesciunt.',
-    icon: <Screen2Icon height={scaledSize(900)} width={scaledSize(965)} />,
-  },
-  {
-    id: 2,
-    title: 'Private Messages for Book Lovers',
-    description:
-      'Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid commodi consequatur autem vel eum iure.',
-    icon: <Screen3Icon height={scaledSize(982)} width={scaledSize(921)} />,
-  },
-  {
-    id: 3,
-    title: 'Authorship books',
-    description:
-      'Nemo enim ipsam voluptatem, quia sit, aspernatur aut odit aut fugit, sed corporis quia consequuntur magni dolores eos, qui ratione voluptatem sequi nesciunt.',
-    icon: <Screen4Icon height={scaledSize(982)} width={scaledSize(921)} />,
-  },
-];
-
 class Onboarding extends Component {
   constructor(props) {
     super(props);
     this.state = {
       activePageIndex: 0,
+      screens: [
+        {
+          id: 0,
+          title: 'Smart book filter',
+          description:
+            'Sed ut perspiciatis, unde omnis iste natus error sit voluptatem accusantium, totam rem aperiam eaque ipsa, quae ab illo inventore veritatis et quasi architecto beataet.',
+          icon: (
+            <Screen1Icon height={scaledSize(872)} width={scaledSize(945)} />
+          ),
+        },
+        {
+          id: 1,
+          title: 'Dark and white theme',
+          description:
+            'Nemo enim ipsam voluptatem, quia sit, aspernatur aut odit aut fugit, sed corporis quia consequuntur magni dolores eos, qui ratione voluptatem sequi nesciunt.',
+          icon: (
+            <Screen2Icon height={scaledSize(900)} width={scaledSize(965)} />
+          ),
+        },
+        {
+          id: 2,
+          title: 'Private Messages for Book Lovers',
+          description:
+            'Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid commodi consequatur autem vel eum iure.',
+          icon: (
+            <Screen3Icon height={scaledSize(982)} width={scaledSize(921)} />
+          ),
+        },
+        {
+          id: 3,
+          title: 'Authorship books',
+          description:
+            'Nemo enim ipsam voluptatem, quia sit, aspernatur aut odit aut fugit, sed corporis quia consequuntur magni dolores eos, qui ratione voluptatem sequi nesciunt.',
+          icon: (
+            <Screen4Icon height={scaledSize(982)} width={scaledSize(921)} />
+          ),
+        },
+      ],
     };
   }
 
@@ -73,13 +80,28 @@ class Onboarding extends Component {
     );
   };
 
+  handlePressNext = () => {
+    const {activePageIndex} = this.state;
+
+    if (activePageIndex < 3) {
+      this.scorllL.scrollToIndex({index: activePageIndex + 1, animated: true});
+    }
+  };
+
+  handlePressSkip = () => {
+    const {navigation} = this.props;
+    navigation.navigate('Preload');
+  };
+
   render() {
+    const {screens, activePageIndex} = this.state;
     return (
       <View style={styles.container}>
         <SafeAreaView style={styles.container}>
           <View style={{flex: 1, justifyContent: 'center'}}>
             <View>
               <FlatList
+                ref={(ref) => (this.scorllL = ref)}
                 showsHorizontalScrollIndicator={false}
                 pagingEnabled
                 horizontal
@@ -110,9 +132,25 @@ class Onboarding extends Component {
               />
             </View>
             <View style={paginationStyle.container}>
-              <Text style={globalStyles.regularText}>SKIP</Text>
+              <Text
+                style={globalStyles.regularText}
+                onPress={this.handlePressSkip}>
+                SKIP
+              </Text>
               {this.renderPaginationDots()}
-              <Text style={globalStyles.regularText}>NEXT</Text>
+              {activePageIndex === 3 ? (
+                <Text
+                  style={globalStyles.regularText}
+                  onPress={this.handlePressSkip}>
+                  SKIP
+                </Text>
+              ) : (
+                <Text
+                  style={globalStyles.regularText}
+                  onPress={this.handlePressNext}>
+                  NEXT
+                </Text>
+              )}
             </View>
           </View>
         </SafeAreaView>
