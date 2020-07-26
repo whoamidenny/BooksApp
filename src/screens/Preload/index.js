@@ -1,14 +1,15 @@
 import React, {Component} from 'react';
-
 import {View, FlatList, SafeAreaView, Text} from 'react-native';
-
 import styles from './styles';
 import QuestionCheckBox from '../../components/CheckBoxes/QuestionCheckBox';
+import {DefaultButton} from '../../components/Buttons';
+import {translate} from '../../i18n';
 
 class Preload extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      currentScreenIndex: 0,
       screens: [
         {
           id: 0,
@@ -20,6 +21,29 @@ class Preload extends Component {
             {id: 0, title: 'Men'},
             {id: 1, title: 'Women'},
             {id: 2, title: 'Both'},
+          ],
+        },
+        {
+          id: 1,
+          title: null,
+          subtitle: null,
+          question: 'Do you like books where the protagonist is:',
+          choices: [
+            {id: 0, title: 'Men'},
+            {id: 1, title: 'Women'},
+            {id: 2, title: 'Both (Multiple protagonists)'},
+          ],
+        },
+        {
+          id: 3,
+          title: null,
+          subtitle: null,
+          question: 'Which Point of View do you prefer:',
+          choices: [
+            {id: 0, title: 'First (I did this)'},
+            {id: 1, title: 'Second (You did this)'},
+            {id: 2, title: 'Third-Limited (They did this)'},
+            {id: 3, title: 'Third-Omniscient (They didn’t know this)'},
           ],
         },
       ],
@@ -60,16 +84,32 @@ class Preload extends Component {
     });
   };
 
+  onPressNext = () => {
+    const {currentScreenIndex, screens} = this.state;
+    currentScreenIndex < screens.length - 1
+      ? (this.flatList.scrollToIndex({
+          animated: true,
+          index: currentScreenIndex + 1,
+        }),
+        this.setState({
+          currentScreenIndex: currentScreenIndex + 1,
+        }))
+      : null;
+  };
+
   render() {
-    const {screens} = this.state;
+    const {screens, currentScreenIndex} = this.state;
     return (
       <View style={styles.container}>
         <SafeAreaView style={styles.container}>
           <View style={styles.content}>
             <FlatList
+              horizontal
+              showsHorizontalScrollIndicator={false}
+              ref={(flatList) => (this.flatList = flatList)}
               data={screens}
               renderItem={({item, index}) => (
-                <View>
+                <View style={styles.renderScreenContainer}>
                   <Text style={styles.title}>{item.title}</Text>
                   <Text style={styles.subtitle}>{item.subtitle}</Text>
                   <Text style={styles.question}>{item.question}</Text>
@@ -86,6 +126,21 @@ class Preload extends Component {
               )}
               keyExtractor={(item, index) => index.toString()}
             />
+            <View style={styles.bottomButtonsContainer}>
+              {currentScreenIndex === 1 && (
+                <DefaultButton
+                  title={translate('Discover')}
+                  //onPress={this.onPressNext}
+                  buttonStyle={styles.buttonDiscoverStyle}
+                  containerStyle={styles.buttonContainerStyle}
+                />
+              )}
+              <DefaultButton
+                title={translate('Next')}
+                onPress={this.onPressNext}
+                containerStyle={styles.buttonContainerStyle}
+              />
+            </View>
           </View>
         </SafeAreaView>
       </View>

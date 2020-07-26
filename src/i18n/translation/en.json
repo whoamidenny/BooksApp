@@ -1,1 +1,5 @@
-{"hello":"Hello"}
+{
+  "hello": "Hello",
+  "Next": "Next",
+  "Discover": "Discover"
+}

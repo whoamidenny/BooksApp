@@ -1,6 +1,6 @@
 import EStyleSheet from 'react-native-extended-stylesheet';
 
-import {fonts, colors} from '../../../constants';
+import {fonts} from '../../../constants';
 import {scaledSize} from '../../../styles';
 
 export default EStyleSheet.create({

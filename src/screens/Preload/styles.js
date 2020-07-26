@@ -1,3 +1,4 @@
+import {Dimensions} from 'react-native';
 import EStyleSheet from 'react-native-extended-stylesheet';
 import {scaledSize} from '../../styles';
 import {fonts} from '../../constants';
@@ -9,7 +10,6 @@ export default EStyleSheet.create({
   },
   content: {
     flex: 1,
-    paddingHorizontal: scaledSize(80),
   },
   title: {
     fontFamily: fonts.circeBold,
@@ -33,5 +33,19 @@ export default EStyleSheet.create({
     fontFamily: fonts.circeRegular,
     fontSize: scaledSize(42),
     color: '$questionText',
+  },
+  buttonContainerStyle: {
+    paddingHorizontal: scaledSize(80),
+    flex: 1,
+  },
+  buttonDiscoverStyle: {
+    backgroundColor: '$buttonDiscoverBackground',
+  },
+  renderScreenContainer: {
+    width: Dimensions.get('window').width,
+    paddingHorizontal: scaledSize(80),
+  },
+  bottomButtonsContainer: {
+    flexDirection: 'row',
   },
 });

@@ -4,6 +4,7 @@ export default {
   $text: '#0b1e35',
   $headerBackground: 'blue',
   $buttonBackground: '#ea9e6c',
+  $buttonDiscoverBackground: '#6ac3ff',
   $link: '#59a5ff',
   $headerText: '#0a1d36',
   $inputBorder: '#e8f1f6',

@@ -15,7 +15,7 @@ const translate = memoize(
 
 const setI18nConfig = (option = null) => {
   // fallback if no available language fits
-  var fallback = {languageTag: 'ru', isRTL: false};
+  var fallback = {languageTag: 'en', isRTL: false};
 
   if (option !== null) {
     fallback = option;
