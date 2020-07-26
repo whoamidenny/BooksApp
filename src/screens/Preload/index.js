@@ -107,7 +107,10 @@ class Preload extends Component {
     const onePercent = screens.length / 100;
     const currentPercent = (currentScreenIndex + 2) / onePercent;
     this.setState({
-      progress: currentPercent >= 100 ? 1 : '0.' + currentPercent.toFixed(0),
+      progress: Number(
+        currentPercent >= 100 ? 1 : '0.' + currentPercent.toFixed(0),
+        10,
+      ),
       currentPercent: currentPercent.toFixed(0),
     });
   };

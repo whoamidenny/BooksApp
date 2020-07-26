@@ -1,13 +1,12 @@
-
-    import React from 'react';
-import { View, ActivityIndicator } from 'react-native';
+import React from 'react';
+import {View, ActivityIndicator} from 'react-native';
 
 import styles from './styles';
 
-import { useSelector } from 'react-redux';
+import {useSelector} from 'react-redux';
 
-function ErrorBoundary({ children }) {
-  const { loading } = useSelector(state => state.error);
+function ErrorBoundary({children}) {
+  const {loading} = useSelector((state) => state.error);
 
   if (loading) {
     return (
@@ -16,8 +15,7 @@ function ErrorBoundary({ children }) {
       </View>
     );
   }
-  return <View style={{ flex: 1 }}>{children}</View>;
+  return <View style={{flex: 1}}>{children}</View>;
 }
 
 export default ErrorBoundary;
-  

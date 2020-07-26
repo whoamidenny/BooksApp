@@ -2,7 +2,8 @@ export default {
   $theme: 'dark',
   $background: '#1d2c3f',
   $text: '#ffffff',
-  $headerBackground: 'red',
+  $headerBackground: '#1d2c3f',
+  $headerBorder: '#0b1e35',
   $buttonBackground: '#ea9e6c',
   $buttonDiscoverBackground: '#6ac3ff',
   $link: '#6cb7f9',
@@ -10,4 +11,6 @@ export default {
   $inputBorder: '#e7f1f6',
   $backButton: '#ffffff',
   $questionText: '#ffffff',
+  $label: '#ffffff',
+  $profileBlockBackground: '#0b1e35',
 };
