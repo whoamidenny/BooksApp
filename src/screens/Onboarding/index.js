@@ -142,7 +142,7 @@ class Onboarding extends Component {
                 <Text
                   style={globalStyles.regularText}
                   onPress={this.handlePressSkip}>
-                  SKIP
+                  START
                 </Text>
               ) : (
                 <Text

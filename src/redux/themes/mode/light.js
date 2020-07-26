@@ -8,4 +8,5 @@ export default {
   $headerText: '#0a1d36',
   $inputBorder: '#e8f1f6',
   $backButton: '#0b1e35',
+  $questionText: '#0b1e35',
 };
