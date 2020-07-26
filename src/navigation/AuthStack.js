@@ -53,12 +53,20 @@ export default function AuthStack() {
       <Stack.Screen
         name="Preload"
         component={Preload}
-        options={{
-          headerRight: () => (
-            <View style={{marginRight: scaledSize(60)}}>
-              <Text style={globalStyles.headerSmallText}>SKIP</Text>
-            </View>
-          ),
+        options={({navigation}) => {
+          return {
+            headerRight: () => (
+              <View style={{marginRight: scaledSize(60)}}>
+                <Text
+                  style={globalStyles.headerSmallText}
+                  onPress={() => {
+                    navigation.navigate('Home');
+                  }}>
+                  SKIP
+                </Text>
+              </View>
+            ),
+          };
         }}
       />
     </Stack.Navigator>
