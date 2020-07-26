@@ -25,6 +25,41 @@ class Preload extends Component {
       ],
     };
   }
+
+  setSelection = (screenId, choseId) => {
+    const init = this.state.screens;
+    const currentScreenChoices = init.find((item) => item.id === screenId)
+      .choices;
+    const newCurrentScreenChoices = currentScreenChoices.map((item) => {
+      if (item.id === choseId) {
+        return {
+          ...item,
+          checked: true,
+        };
+      } else {
+        return {
+          ...item,
+          checked: false,
+        };
+      }
+    });
+    const newScreensData = init.map((item) => {
+      if (item.id === screenId) {
+        return {
+          ...item,
+          choices: newCurrentScreenChoices,
+        };
+      } else {
+        return {
+          ...item,
+        };
+      }
+    });
+    this.setState({
+      screens: newScreensData,
+    });
+  };
+
   render() {
     const {screens} = this.state;
     return (
@@ -33,7 +68,7 @@ class Preload extends Component {
           <View style={styles.content}>
             <FlatList
               data={screens}
-              renderItem={({item}) => (
+              renderItem={({item, index}) => (
                 <View>
                   <Text style={styles.title}>{item.title}</Text>
                   <Text style={styles.subtitle}>{item.subtitle}</Text>
@@ -42,8 +77,8 @@ class Preload extends Component {
                     data={item.choices}
                     renderItem={(choice) => (
                       <QuestionCheckBox
-                        title={choice.item.title}
-                        checked={false}
+                        choice={choice}
+                        onPress={(choseId) => this.setSelection(index, choseId)}
                       />
                     )}
                   />

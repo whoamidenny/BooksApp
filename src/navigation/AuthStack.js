@@ -18,6 +18,7 @@ export default function AuthStack() {
   const theme = useSelector((state) => state.theme);
   return (
     <Stack.Navigator
+      initialRouteName="Preload"
       screenOptions={{
         headerTitle: '',
         headerBackTitleVisible: false,
