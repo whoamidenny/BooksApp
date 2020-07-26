@@ -1,15 +1,18 @@
 import React, {Component} from 'react';
-import {View, FlatList, SafeAreaView, Text} from 'react-native';
-import styles from './styles';
+import {View, FlatList, SafeAreaView, Text, Dimensions} from 'react-native';
+import * as Progress from 'react-native-progress';
 import QuestionCheckBox from '../../components/CheckBoxes/QuestionCheckBox';
 import {DefaultButton} from '../../components/Buttons';
 import {translate} from '../../i18n';
-
+import styles from './styles';
+import {colors} from '../../constants';
 class Preload extends Component {
   constructor(props) {
     super(props);
     this.state = {
       currentScreenIndex: 0,
+      progress: 0,
+      currentPercent: 0,
       screens: [
         {
           id: 0,
@@ -35,7 +38,7 @@ class Preload extends Component {
           ],
         },
         {
-          id: 3,
+          id: 2,
           title: null,
           subtitle: null,
           question: 'Which Point of View do you prefer:',
@@ -86,6 +89,7 @@ class Preload extends Component {
 
   onPressNext = () => {
     const {currentScreenIndex, screens} = this.state;
+
     currentScreenIndex < screens.length - 1
       ? (this.flatList.scrollToIndex({
           animated: true,
@@ -93,16 +97,44 @@ class Preload extends Component {
         }),
         this.setState({
           currentScreenIndex: currentScreenIndex + 1,
-        }))
+        }),
+        this.setProgress())
       : null;
   };
 
-  render() {
+  setProgress = () => {
     const {screens, currentScreenIndex} = this.state;
+    const onePercent = screens.length / 100;
+    const currentPercent = (currentScreenIndex + 2) / onePercent;
+    this.setState({
+      progress: currentPercent >= 100 ? 1 : '0.' + currentPercent.toFixed(0),
+      currentPercent: currentPercent.toFixed(0),
+    });
+  };
+
+  render() {
+    const {screens, currentScreenIndex, progress, currentPercent} = this.state;
     return (
       <View style={styles.container}>
         <SafeAreaView style={styles.container}>
           <View style={styles.content}>
+            <View style={styles.topProgressContainer}>
+              {progress > 0 && (
+                <View>
+                  <Progress.Bar
+                    progress={progress}
+                    width={Dimensions.get('screen').width - 60}
+                    style={styles.progressBarStyle}
+                    unfilledColor={colors.progressBarBorderColor}
+                    borderColor={colors.progressBarBorderColor}
+                    color={colors.progressBarColor}
+                  />
+                  <Text style={styles.percentageTextStyle}>
+                    ({currentPercent}% ready)
+                  </Text>
+                </View>
+              )}
+            </View>
             <FlatList
               horizontal
               showsHorizontalScrollIndicator={false}

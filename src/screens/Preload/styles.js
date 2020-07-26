@@ -48,4 +48,14 @@ export default EStyleSheet.create({
   bottomButtonsContainer: {
     flexDirection: 'row',
   },
+  topProgressContainer: {
+    paddingHorizontal: scaledSize(80),
+    alignItems: 'center',
+    height: 12,
+  },
+  percentageTextStyle: {
+    fontFamily: fonts.circeRegular,
+    fontSize: 14,
+    textAlign: 'center',
+  },
 });
