@@ -4,7 +4,7 @@ import {View, Text, Switch, ActivityIndicator} from 'react-native';
 import {Avatar, Input} from 'react-native-elements';
 import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
 
-import {useDispatch} from 'react-redux';
+import {useDispatch, useSelector} from 'react-redux';
 import {themeActions} from '../../redux/themes';
 import {DefaultHeader} from '../../components/Headers';
 
@@ -25,22 +25,33 @@ const ProfileInput = ({...props}) => (
 );
 
 function Profile({navigation}) {
+  const dispatch = useDispatch();
+  const theme = useSelector((state) => state.theme);
+
   const [fullname, setFullName] = useState('John Doe');
   const [email, setEmail] = useState('johndoe@gmail.com');
   const [password, setPassword] = useState('123456778900');
 
-  const [isActive, changeTheme] = useState(false);
+  const [isActive, setDarkThemeActive] = useState();
   const [loading, setLoading] = useState(false);
-  const dispatch = useDispatch();
 
-  useEffect(() => {
+  function onChangeTheme() {
+    const themeName = theme.$theme;
+
     setLoading(true);
-    const themeName = isActive ? 'dark' : 'light';
-    dispatch(themeActions.changeThemeMode(themeName));
+    dispatch(
+      themeActions.changeThemeMode(themeName === 'light' ? 'dark' : 'light'),
+    );
     setTimeout(() => {
       setLoading(false);
     }, 1500);
-  }, [isActive]);
+  }
+
+  useEffect(() => {
+    const themeName = theme.$theme;
+
+    setDarkThemeActive(themeName === 'light' ? false : true);
+  }, []);
 
   if (loading) {
     return (
@@ -54,7 +65,7 @@ function Profile({navigation}) {
 
   return (
     <BaseBlock>
-      <DefaultHeader title="Profile" />
+      <DefaultHeader title="Profile" rightTitle="SAVE" />
       <KeyboardAwareScrollView contentContainerStyle={styles.containerScroll}>
         <View style={styles.profileContainer}>
           <Avatar
@@ -90,10 +101,7 @@ function Profile({navigation}) {
 
         <View style={styles.rowItem}>
           <Text style={styles.label}>Dark Mode</Text>
-          <Switch
-            value={isActive}
-            onValueChange={() => changeTheme(!isActive)}
-          />
+          <Switch value={isActive} onValueChange={() => onChangeTheme()} />
         </View>
         <View style={styles.rowItem}>
           <Text style={styles.label}>Notifications</Text>

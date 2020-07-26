@@ -12,6 +12,6 @@ export default {
   $questionText: '#0b1e35',
   $label: '#0b1e35',
   $profileBlockBackground: 'rgb(74, 131, 190)',
-  $messageBackground: '#f3faff',
+  $messageBackground: 'rgba(255,255,255, 0.7)',
   $messageText: '#0b1e35',
 };

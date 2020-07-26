@@ -21,7 +21,8 @@ function MainBottomNavigation() {
           borderTopWidth: 0,
           backgroundColor: theme.$background,
         },
-      }}>
+      }}
+      screenOptions={{unmountOnBlur: true}}>
       <Tab.Screen
         name="Home"
         component={Home}

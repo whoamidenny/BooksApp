@@ -8,7 +8,7 @@ import {scaledSize} from '../../../styles';
 import {useSelector} from 'react-redux';
 import {useNavigation} from '@react-navigation/native';
 
-function DefaultHeader({title}) {
+function DefaultHeader({title, rightTitle}) {
   const theme = useSelector((state) => state.theme);
   const navigation = useNavigation();
 
@@ -31,7 +31,7 @@ function DefaultHeader({title}) {
         <Text style={styles.title}>{title}</Text>
       </View>
       <View>
-        <Text style={styles.rightText}>SAVE</Text>
+        <Text style={styles.rightText}>{rightTitle}</Text>
       </View>
     </View>
   );

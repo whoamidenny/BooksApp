@@ -1,9 +1,11 @@
 import React from 'react';
 
 import {View, Text, FlatList} from 'react-native';
-import {MainBlock} from '../../components/Blocks';
+import {MainBlock, BaseBlock} from '../../components/Blocks';
 
 import styles from './styles';
+import {DefaultHeader} from '../../components/Headers';
+import {scaledSize} from '../../styles';
 
 const notifications = [
   {
@@ -22,17 +24,20 @@ const notifications = [
 
 function Profile({navigation}) {
   return (
-    <MainBlock>
+    <BaseBlock>
+      <DefaultHeader title="Notifications" rightTitle="CLEAR" />
       <FlatList
         data={notifications}
         renderItem={({item}) => (
           <View style={styles.messageContainer}>
-            <Text>{item.title}</Text>
-            <Text>{item.description}</Text>
+            <Text style={styles.messageTitle}>{item.title}</Text>
+            <Text style={styles.messageDescription}>{item.description}</Text>
           </View>
         )}
+        keyExtractor={(item, index) => index.toString()}
+        contentContainerStyle={styles.notificationContainer}
       />
-    </MainBlock>
+    </BaseBlock>
   );
 }
 
