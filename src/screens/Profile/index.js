@@ -32,8 +32,14 @@ function Profile({navigation}) {
   const [email, setEmail] = useState('johndoe@gmail.com');
   const [password, setPassword] = useState('123456778900');
 
-  const [isActive, setDarkThemeActive] = useState();
+  const [isActive, setDarkThemeActive] = useState(false);
   const [loading, setLoading] = useState(false);
+
+  useEffect(() => {
+    const themeName = theme.$theme;
+
+    setDarkThemeActive(themeName === 'light' ? false : true);
+  }, []);
 
   function onChangeTheme() {
     const themeName = theme.$theme;
@@ -42,16 +48,12 @@ function Profile({navigation}) {
     dispatch(
       themeActions.changeThemeMode(themeName === 'light' ? 'dark' : 'light'),
     );
+
+    setDarkThemeActive(!isActive);
     setTimeout(() => {
       setLoading(false);
     }, 1500);
   }
-
-  useEffect(() => {
-    const themeName = theme.$theme;
-
-    setDarkThemeActive(themeName === 'light' ? false : true);
-  }, []);
 
   if (loading) {
     return (
