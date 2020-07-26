@@ -5,12 +5,12 @@ import {MainBlock} from '../../components/Blocks';
 
 import styles from './styles';
 
-function Notifications({navigation}) {
+function Profile({navigation}) {
   return (
     <MainBlock>
-      <Text>Notifications</Text>
+      <Text>Profile</Text>
     </MainBlock>
   );
 }
 
-export default Notifications;
+export default Profile;
