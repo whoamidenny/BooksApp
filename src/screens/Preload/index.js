@@ -142,8 +142,13 @@ class Preload extends Component {
               data={screens}
               renderItem={({item, index}) => (
                 <View style={styles.renderScreenContainer}>
-                  <Text style={styles.title}>{item.title}</Text>
-                  <Text style={styles.subtitle}>{item.subtitle}</Text>
+                  {currentScreenIndex === 0 && (
+                    <View>
+                      <Text style={styles.title}>{item.title}</Text>
+                      <Text style={styles.subtitle}>{item.subtitle}</Text>
+                    </View>
+                  )}
+
                   <Text style={styles.question}>{item.question}</Text>
                   <FlatList
                     data={item.choices}

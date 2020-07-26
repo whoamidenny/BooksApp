@@ -26,7 +26,7 @@ export default EStyleSheet.create({
   question: {
     fontFamily: fonts.circeBold,
     fontSize: scaledSize(44),
-    marginVertical: scaledSize(60),
+    marginVertical: scaledSize(10),
     color: '$questionText',
   },
   choice: {
@@ -51,7 +51,8 @@ export default EStyleSheet.create({
   topProgressContainer: {
     paddingHorizontal: scaledSize(80),
     alignItems: 'center',
-    height: 12,
+    justifyContent: 'center',
+    height: scaledSize(120),
   },
   percentageTextStyle: {
     fontFamily: fonts.circeRegular,
