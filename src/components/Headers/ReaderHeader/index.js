@@ -13,7 +13,7 @@ function ReaderHeader({title, rightTitle}) {
   const navigation = useNavigation();
 
   function onPressBack() {
-    navigation.navigate('Home');
+    navigation.goBack();
   }
 
   return (
