@@ -4,13 +4,17 @@ import android.os.Bundle;
 
 import com.facebook.react.ReactActivity;
 import org.devio.rn.splashscreen.SplashScreen; // here
+import android.content.Intent;
 
-public class MainActivity extends ReactActivity {
+public class SplashActivity extends ReactActivity {
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
-    SplashScreen.show(this);  // here
+    
     super.onCreate(savedInstanceState);
+    Intent intent = new Intent(this, MainActivity.class);
+    startActivity(intent);
+    finish();
   }
 
   /**
