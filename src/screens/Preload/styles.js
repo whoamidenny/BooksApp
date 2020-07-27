@@ -28,6 +28,7 @@ export default EStyleSheet.create({
     fontSize: scaledSize(44),
     marginVertical: scaledSize(10),
     color: '$questionText',
+    marginTop: scaledSize(60),
   },
   choice: {
     fontFamily: fonts.circeRegular,
@@ -58,5 +59,15 @@ export default EStyleSheet.create({
     fontFamily: fonts.circeRegular,
     fontSize: 14,
     textAlign: 'center',
+  },
+
+  progressContainer: {
+    marginVertical: scaledSize(75),
+    alignItems: 'center',
+  },
+  bottomContainer: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    paddingHorizontal: scaledSize(80),
   },
 });

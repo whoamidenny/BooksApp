@@ -3,9 +3,10 @@ import {View, FlatList, SafeAreaView, Text, Dimensions} from 'react-native';
 import * as Progress from 'react-native-progress';
 import QuestionCheckBox from '../../components/CheckBoxes/QuestionCheckBox';
 import {DefaultButton} from '../../components/Buttons';
-import {translate} from '../../i18n';
 import styles from './styles';
 import {colors} from '../../constants';
+import {scaledSize} from '../../styles';
+
 class Preload extends Component {
   constructor(props) {
     super(props);
@@ -49,6 +50,60 @@ class Preload extends Component {
             {id: 3, title: 'Third-Omniscient (They didn’t know this)'},
           ],
         },
+        {
+          id: 3,
+          title: null,
+          subtitle: null,
+          question: 'What tense do you prefer:',
+          choices: [
+            {id: 0, title: 'Past tense: She ran to the store'},
+            {id: 1, title: 'Present tense: She runs to the store'},
+            {id: 2, title: 'Future tense: She will run to the store'},
+          ],
+        },
+        {
+          id: 4,
+          title: null,
+          subtitle: null,
+          question: 'Are you okay with violence in books?',
+          choices: [
+            {id: 0, title: 'Yes'},
+            {id: 1, title: 'No'},
+          ],
+        },
+        {
+          id: 5,
+          title: null,
+          subtitle: null,
+          question: 'Are you okay with explicit language in books?',
+          choices: [
+            {id: 0, title: 'Yes'},
+            {id: 1, title: 'No'},
+          ],
+        },
+        {
+          id: 6,
+          title: null,
+          subtitle: null,
+          question: 'Are you okay with explicit /detailed sex scenes?',
+          choices: [
+            {id: 0, title: 'Yes'},
+            {id: 1, title: 'No'},
+          ],
+        },
+        {
+          id: 7,
+          title: null,
+          subtitle: null,
+          question:
+            'Please choose 10 of the following Genres you prefer to read:',
+          choices: [
+            {id: 0, title: 'Action & Adventure'},
+            {id: 1, title: 'African American'},
+            {id: 2, title: 'Alternative History'},
+            {id: 3, title: 'Amish & Mennonite'},
+          ],
+        },
       ],
     };
   }
@@ -88,30 +143,26 @@ class Preload extends Component {
   };
 
   onPressNext = () => {
-    const {currentScreenIndex, screens} = this.state;
+    const {currentScreenIndex} = this.state;
+    const {navigation} = this.props;
 
-    currentScreenIndex < screens.length - 1
-      ? (this.flatList.scrollToIndex({
-          animated: true,
-          index: currentScreenIndex + 1,
-        }),
-        this.setState({
-          currentScreenIndex: currentScreenIndex + 1,
-        }),
-        this.setProgress())
-      : null;
+    if (currentScreenIndex === 7) {
+      navigation.navigate('Home');
+    } else {
+      this.flatList.scrollToIndex({
+        index: currentScreenIndex + 1,
+        animated: true,
+      });
+    }
   };
 
-  setProgress = () => {
-    const {screens, currentScreenIndex} = this.state;
-    const onePercent = screens.length / 100;
-    const currentPercent = (currentScreenIndex + 2) / onePercent;
+  onViewableItemsChanged = ({viewableItems, changed}) => {
+    const {screens} = this.state;
+    const visibleIndex = viewableItems[0].index;
+
     this.setState({
-      progress: Number(
-        currentPercent >= 100 ? 1 : '0.' + currentPercent.toFixed(0),
-        10,
-      ),
-      currentPercent: currentPercent.toFixed(0),
+      currentScreenIndex: visibleIndex,
+      progress: (visibleIndex + 1) / screens.length,
     });
   };
 
@@ -121,65 +172,71 @@ class Preload extends Component {
       <View style={styles.container}>
         <SafeAreaView style={styles.container}>
           <View style={styles.content}>
-            <View style={styles.topProgressContainer}>
-              {progress > 0 && (
-                <View>
-                  <Progress.Bar
-                    progress={progress}
-                    width={Dimensions.get('screen').width - 60}
-                    style={styles.progressBarStyle}
-                    unfilledColor={colors.progressBarBorderColor}
-                    borderColor={colors.progressBarBorderColor}
-                    color={colors.progressBarColor}
-                  />
-                  <Text style={styles.percentageTextStyle}>
-                    ({currentPercent}% ready)
-                  </Text>
-                </View>
-              )}
-            </View>
-            <FlatList
-              horizontal
-              showsHorizontalScrollIndicator={false}
-              pagingEnabled
-              ref={(flatList) => (this.flatList = flatList)}
-              data={screens}
-              renderItem={({item, index}) => (
-                <View style={styles.renderScreenContainer}>
-                  {currentScreenIndex === 0 && (
-                    <View>
-                      <Text style={styles.title}>{item.title}</Text>
-                      <Text style={styles.subtitle}>{item.subtitle}</Text>
-                    </View>
-                  )}
-
-                  <Text style={styles.question}>{item.question}</Text>
-                  <FlatList
-                    data={item.choices}
-                    renderItem={(choice) => (
-                      <QuestionCheckBox
-                        choice={choice}
-                        onPress={(choseId) => this.setSelection(index, choseId)}
-                      />
-                    )}
-                  />
-                </View>
-              )}
-              keyExtractor={(item, index) => index.toString()}
-            />
-            <View style={styles.bottomButtonsContainer}>
-              {currentScreenIndex === 1 && (
-                <DefaultButton
-                  title={translate('Discover')}
-                  //onPress={this.onPressNext}
-                  buttonStyle={styles.buttonDiscoverStyle}
-                  containerStyle={styles.buttonContainerStyle}
+            {currentScreenIndex !== 0 ? (
+              <View style={styles.progressContainer}>
+                <Progress.Bar
+                  progress={progress}
+                  width={Dimensions.get('window').width - scaledSize(160)}
+                  style={styles.progressBarStyle}
+                  unfilledColor={colors.progressBarBorderColor}
+                  borderColor={colors.progressBarBorderColor}
+                  color={colors.progressBarColor}
                 />
-              )}
+                <Text style={styles.percentageTextStyle}>
+                  ({Math.round(progress * 100)}% ready)
+                </Text>
+              </View>
+            ) : null}
+            <View style={{flex: 1}}>
+              <FlatList
+                horizontal
+                showsHorizontalScrollIndicator={false}
+                pagingEnabled
+                ref={(flatList) => (this.flatList = flatList)}
+                data={screens}
+                renderItem={({item, index}) => (
+                  <View style={styles.renderScreenContainer}>
+                    {currentScreenIndex === 0 && (
+                      <View>
+                        <Text style={styles.title}>{item.title}</Text>
+                        <Text style={styles.subtitle}>{item.subtitle}</Text>
+                      </View>
+                    )}
+
+                    <Text style={styles.question}>{item.question}</Text>
+                    <FlatList
+                      data={item.choices}
+                      renderItem={(choice) => (
+                        <QuestionCheckBox
+                          choice={choice}
+                          onPress={(choseId) =>
+                            this.setSelection(index, choseId)
+                          }
+                        />
+                      )}
+                    />
+                  </View>
+                )}
+                onViewableItemsChanged={this.onViewableItemsChanged}
+                viewabilityConfig={{
+                  itemVisiblePercentThreshold: 50,
+                }}
+                keyExtractor={(item, index) => index.toString()}
+              />
+            </View>
+            <View style={styles.bottomContainer}>
+              {currentScreenIndex === 1 ? (
+                <DefaultButton
+                  title={'Discover'}
+                  onPress={this.onPressNext}
+                  buttonStyle={{backgroundColor: colors.progressBarColor}}
+                  containerStyle={{flex: 1, marginRight: scaledSize(10)}}
+                />
+              ) : null}
               <DefaultButton
-                title={translate('Next')}
+                title={currentScreenIndex === 7 ? 'Discover' : 'Next'}
                 onPress={this.onPressNext}
-                containerStyle={styles.buttonContainerStyle}
+                containerStyle={{flex: 1, marginLeft: scaledSize(10)}}
               />
             </View>
           </View>
