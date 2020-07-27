@@ -2,6 +2,7 @@ import React, {useEffect} from 'react';
 
 import {View, Text} from 'react-native';
 import {MainBlock} from '../../components/Blocks';
+import {HomeHeader} from '../../components/Headers';
 
 import SplashScreen from 'react-native-splash-screen';
 
@@ -12,9 +13,10 @@ function Home({navigation}) {
     SplashScreen.hide();
   }, []);
   return (
-    <MainBlock>
-      <Text>Home</Text>
-    </MainBlock>
+    <View style={styles.container}>
+      <HomeHeader />
+      <MainBlock></MainBlock>
+    </View>
   );
 }
 
