@@ -7,7 +7,8 @@ const Tab = createBottomTabNavigator();
 import Home from '../screens/Home';
 import Notifications from '../screens/Notifications';
 import Profile from '../screens/Profile';
-import Library from '../screens/UserLibrary';
+import Library from './LibraryStack';
+
 import {scaledSize} from '../styles';
 import {useSelector} from 'react-redux';
 
@@ -46,21 +47,30 @@ function MainBottomNavigation() {
       <Tab.Screen
         name="Library"
         component={Library}
-        options={{
-          tabBarIcon: () =>
-            theme.$theme === 'light' ? (
-              <Image
-                source={require('../assets/images/library.png')}
-                style={{width: scaledSize(80), height: scaledSize(80)}}
-                resizeMode="contain"
-              />
-            ) : (
-              <Image
-                source={require('../assets/images/library_b.png')}
-                style={{width: scaledSize(80), height: scaledSize(80)}}
-                resizeMode="contain"
-              />
-            ),
+        options={({navigation, route}) => {
+          let tabBarVisible = true;
+
+          route.state !== undefined
+            ? (tabBarVisible = false)
+            : (tabBarVisible = true);
+
+          return {
+            tabBarVisible,
+            tabBarIcon: () =>
+              theme.$theme === 'light' ? (
+                <Image
+                  source={require('../assets/images/library.png')}
+                  style={{width: scaledSize(80), height: scaledSize(80)}}
+                  resizeMode="contain"
+                />
+              ) : (
+                <Image
+                  source={require('../assets/images/library_b.png')}
+                  style={{width: scaledSize(80), height: scaledSize(80)}}
+                  resizeMode="contain"
+                />
+              ),
+          };
         }}
       />
       <Tab.Screen

@@ -1,6 +1,13 @@
 import React, {useState, useEffect} from 'react';
 
-import {View, Text, FlatList, Image, SafeAreaView} from 'react-native';
+import {
+  View,
+  Text,
+  FlatList,
+  Image,
+  SafeAreaView,
+  TouchableOpacity,
+} from 'react-native';
 
 import {LibraryHeader} from '../../components/Headers';
 
@@ -58,6 +65,10 @@ function UserLibrary({navigation}) {
     setBooksList(newBooksList);
   }, []);
 
+  function onPressBook() {
+    navigation.navigate('Reader');
+  }
+
   return (
     <View style={styles.container}>
       <LibraryHeader />
@@ -66,7 +77,9 @@ function UserLibrary({navigation}) {
           numColumns={3}
           data={booksList}
           renderItem={({item}) => (
-            <View style={styles.bookContainer}>
+            <TouchableOpacity
+              style={styles.bookContainer}
+              onPress={onPressBook}>
               <Image
                 source={item.image}
                 style={styles.image}
@@ -76,7 +89,7 @@ function UserLibrary({navigation}) {
                 <Text style={styles.book}>{item.book}</Text>
                 <Text style={styles.author}>{item.author}</Text>
               </View>
-            </View>
+            </TouchableOpacity>
           )}
           keyExtractor={(item, index) => index.toString()}
           contentContainerStyle={{
