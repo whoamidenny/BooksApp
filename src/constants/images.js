@@ -1,2 +1,4 @@
-const images = {};
-  export default images
+const images = {
+  background: require('../assets/images/background.png'),
+};
+export default images;

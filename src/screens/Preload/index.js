@@ -141,6 +141,7 @@ class Preload extends Component {
             <FlatList
               horizontal
               showsHorizontalScrollIndicator={false}
+              pagingEnabled
               ref={(flatList) => (this.flatList = flatList)}
               data={screens}
               renderItem={({item, index}) => (
