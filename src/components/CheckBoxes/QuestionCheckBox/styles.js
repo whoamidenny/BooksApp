@@ -15,4 +15,18 @@ export default EStyleSheet.create({
     fontSize: scaledSize(42),
     color: '$questionText',
   },
+  checkBoxWrapperStyle: {
+    borderWidth: 1,
+    borderRadius: 20,
+    borderColor: '$inputBorder',
+    width: scaledSize(100),
+    height: scaledSize(100),
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: 'white',
+  },
+  checkBoxContainerStyle: {
+    margin: 0,
+    padding: 0,
+  },
 });

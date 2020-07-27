@@ -7,7 +7,7 @@ const DefaultButton = ({...props}) => (
   <Button
     {...props}
     titleStyle={styles.btnTitle}
-    buttonStyle={styles.btnContainer}
+    buttonStyle={[styles.btnContainer, props.buttonStyle]}
     containerStyle={[styles.containerStyle, props.containerStyle]}
   />
 );
