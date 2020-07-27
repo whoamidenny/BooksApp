@@ -50,7 +50,7 @@ function MainBottomNavigation() {
         options={({navigation, route}) => {
           let tabBarVisible = true;
 
-          route.state !== undefined
+          route.state !== undefined && route.state.index !== 0
             ? (tabBarVisible = false)
             : (tabBarVisible = true);
 
