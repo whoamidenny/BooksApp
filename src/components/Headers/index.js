@@ -1,3 +1,4 @@
 import DefaultHeader from './DefaultHeader';
+import LibraryHeader from './LibraryHeader';
 
-export {DefaultHeader};
+export {DefaultHeader, LibraryHeader};

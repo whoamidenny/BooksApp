@@ -4,6 +4,11 @@ import {fonts} from '../../constants';
 import {scaledSize} from '../../styles';
 
 export default EStyleSheet.create({
+  bookContainer: {
+    flex: 1,
+    marginVertical: scaledSize(50),
+    alignItems: 'center',
+  },
   image: {
     width: scaledSize(275),
     height: scaledSize(430),
@@ -14,5 +19,12 @@ export default EStyleSheet.create({
     fontFamily: fonts.circeBold,
     fontSize: scaledSize(30),
   },
-  author: {fontFamily: fonts.circeRegular, fontSize: scaledSize(26)},
+  author: {
+    fontFamily: fonts.circeRegular,
+    fontSize: scaledSize(26),
+  },
+  container: {
+    flex: 1,
+    backgroundColor: '$background',
+  },
 });

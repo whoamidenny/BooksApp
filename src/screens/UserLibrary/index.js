@@ -1,96 +1,90 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 
 import {View, Text, FlatList, Image, SafeAreaView} from 'react-native';
 
+import {LibraryHeader} from '../../components/Headers';
+
 import styles from './styles';
-import {BaseBlock} from '../../components/Blocks';
+
 import {scaledSize} from '../../styles';
 
-const books = [
-  {
-    id: 0,
-    book: 'Сommodo exepturi',
-    author: 'Oliver Knight ',
-    image: require('../../assets/images/static/1.png'),
-  },
-  {
-    id: 1,
-    book: 'Сommodo exepturi',
-    author: 'Oliver Knight ',
-    image: require('../../assets/images/static/2.png'),
-  },
-  {
-    id: 2,
-    book: 'Сommodo exepturi',
-    author: 'Oliver Knight ',
-    image: require('../../assets/images/static/3.png'),
-  },
-  {
-    id: 3,
-    book: 'Сommodo exepturi',
-    author: 'Oliver Knight ',
-    image: require('../../assets/images/static/4.png'),
-  },
-  {
-    id: 4,
-    book: 'Сommodo exepturi',
-    author: 'Oliver Knight ',
-    image: require('../../assets/images/static/5.png'),
-  },
-];
-
 function UserLibrary({navigation}) {
+  const [booksList, setBooksList] = useState([
+    {
+      id: 0,
+      book: 'Сommodo exepturi',
+      author: 'Oliver Knight ',
+      image: require('../../assets/images/static/1.png'),
+    },
+    {
+      id: 1,
+      book: 'Сommodo exepturi',
+      author: 'Oliver Knight ',
+      image: require('../../assets/images/static/2.png'),
+    },
+    {
+      id: 2,
+      book: 'Сommodo exepturi',
+      author: 'Oliver Knight ',
+      image: require('../../assets/images/static/3.png'),
+    },
+    {
+      id: 3,
+      book: 'Сommodo exepturi',
+      author: 'Oliver Knight ',
+      image: require('../../assets/images/static/4.png'),
+    },
+    {
+      id: 4,
+      book: 'Сommodo exepturi',
+      author: 'Oliver Knight ',
+      image: require('../../assets/images/static/5.png'),
+    },
+  ]);
+
+  useEffect(() => {
+    console.log('BooksList', booksList);
+    const newBooksList = [...booksList];
+    if (booksList.length % 2 !== 0) {
+      for (var i = 0; i < booksList.length % 2; i++) {
+        newBooksList.push({
+          id: booksList.length + i,
+          book: null,
+          author: null,
+          image: null,
+        });
+      }
+    }
+    console.log('New Books List', newBooksList);
+    setBooksList(newBooksList);
+  }, []);
+
   return (
-    <View style={{flex: 1}}>
-      <SafeAreaView>
-        <View
-          style={{
-            backgroundColor: '#3884c3',
-            flexDirection: 'row',
-            justifyContent: 'center',
-          }}>
-          <View
-            style={{
-              paddingHorizontal: scaledSize(60),
-              paddingVertical: scaledSize(45),
-            }}>
-            <Text>Want to Read</Text>
-          </View>
-          <View
-            style={{
-              paddingHorizontal: scaledSize(60),
-              paddingVertical: scaledSize(45),
-            }}>
-            <Text>Continue Reading</Text>
-          </View>
-          <View
-            style={{
-              paddingHorizontal: scaledSize(60),
-              paddingVertical: scaledSize(45),
-            }}>
-            <Text>Finished</Text>
-          </View>
-        </View>
-      </SafeAreaView>
-      <FlatList
-        numColumns={3}
-        data={books}
-        renderItem={({item}) => (
-          <View
-            style={{
-              marginVertical: scaledSize(50),
-              marginHorizontal: scaledSize(20),
-            }}>
-            <Image
-              source={item.image}
-              style={styles.image}
-              resizeMode="contain"
-            />
-            <Text style={styles.book}>{item.book}</Text>
-            <Text style={styles.author}>{item.author}</Text>
-          </View>
-        )}
-      />
+    <View style={styles.container}>
+      <LibraryHeader />
+      <View style={{flex: 1}}>
+        <FlatList
+          numColumns={3}
+          data={booksList}
+          renderItem={({item}) => (
+            <View style={styles.bookContainer}>
+              <Image
+                source={item.image}
+                style={styles.image}
+                resizeMode="contain"
+              />
+              <View>
+                <Text style={styles.book}>{item.book}</Text>
+                <Text style={styles.author}>{item.author}</Text>
+              </View>
+            </View>
+          )}
+          keyExtractor={(item, index) => index.toString()}
+          contentContainerStyle={{
+            paddingHorizontal: scaledSize(80),
+          }}
+        />
+      </View>
     </View>
   );
 }
