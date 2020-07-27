@@ -9,7 +9,7 @@ import store from './redux';
 import setI18nConfig from './i18n';
 
 import light from './redux/themes/mode/light';
-import {StatusBar} from 'react-native';
+import {StatusBar, Platform} from 'react-native';
 
 class App extends Component {
   constructor(props) {
@@ -20,6 +20,11 @@ class App extends Component {
   componentWillMount() {
     //Connect translate
     setI18nConfig();
+
+    if (Platform.OS === 'android') {
+      StatusBar.setBarStyle('dark-content');
+      StatusBar.setBackgroundColor('#f1f9ff');
+    }
     //Connect theming
     EStyleSheet.build(light);
   }

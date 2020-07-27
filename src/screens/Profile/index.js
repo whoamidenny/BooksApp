@@ -1,6 +1,13 @@
 import React, {useState, useEffect} from 'react';
 
-import {View, Text, Switch, ActivityIndicator} from 'react-native';
+import {
+  View,
+  Text,
+  Switch,
+  ActivityIndicator,
+  StatusBar,
+  Platform,
+} from 'react-native';
 import {Avatar, Input} from 'react-native-elements';
 import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
 
@@ -48,6 +55,13 @@ function Profile({navigation}) {
     dispatch(
       themeActions.changeThemeMode(themeName === 'light' ? 'dark' : 'light'),
     );
+    if (Platform.OS === 'android' && themeName === 'dark') {
+      StatusBar.setBackgroundColor('#f1f9ff');
+      StatusBar.setBarStyle('dark-content');
+    } else {
+      StatusBar.setBackgroundColor('#1d2c3f');
+      StatusBar.setBarStyle('light-content');
+    }
 
     setDarkThemeActive(!isActive);
     setTimeout(() => {
