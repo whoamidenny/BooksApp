@@ -43,7 +43,6 @@ function UserLibrary({navigation}) {
   ]);
 
   useEffect(() => {
-    console.log('BooksList', booksList);
     const newBooksList = [...booksList];
     if (booksList.length % 2 !== 0) {
       for (var i = 0; i < booksList.length % 2; i++) {
@@ -55,7 +54,7 @@ function UserLibrary({navigation}) {
         });
       }
     }
-    console.log('New Books List', newBooksList);
+
     setBooksList(newBooksList);
   }, []);
 

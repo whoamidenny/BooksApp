@@ -5,11 +5,11 @@ import {fonts} from '../../../constants';
 
 export default EStyleSheet.create({
   container: {
-    backgroundColor: '#3884c3',
+    backgroundColor: '$libraryHeader',
   },
   block: {
     paddingVertical: scaledSize(65),
-    backgroundColor: '#3884c3',
+    backgroundColor: '$libraryHeader',
     alignItems: 'center',
   },
   headerContainer: {
