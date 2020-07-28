@@ -17,7 +17,10 @@ export default EStyleSheet.create({
   },
   inpStyle: {
     fontFamily: fonts.circeRegular,
-    fontSize: scaledSize(46),
+    fontSize: scaledSize(36),
     paddingHorizontal: 20,
+  },
+  rightIconContainerStyle: {
+    marginHorizontal: scaledSize(20),
   },
 });
