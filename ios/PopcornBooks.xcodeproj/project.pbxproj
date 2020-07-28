@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		00E356F31AD99517003FC87E /* PopcornBooksTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* PopcornBooksTests.m */; };
+		045C6BC5434745BBAB2F184B /* Circe-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = EE9540706C5C4D02A530B03B /* Circe-Thin.ttf */; };
+		0B9770FC8B00402C993119B0 /* Circe-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 89F22A933A5C4CE089663D32 /* Circe-Light.ttf */; };
 		13B07FBC1A68108700A75B9A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.m */; };
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
@@ -18,14 +20,12 @@
 		638A886ACA40D901471799C1 /* libPods-PopcornBooks-PopcornBooksTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 316A4CB190115B30068EDAB1 /* libPods-PopcornBooks-PopcornBooksTests.a */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
 		81E87315E8CD2762F73635D1 /* libPods-PopcornBooks.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5B4F95C64B24FD7C862E279B /* libPods-PopcornBooks.a */; };
+		8E4F32D5583B4EE19857DE36 /* Circe-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = DDEE998158CC4A50B74C9187 /* Circe-ExtraBold.ttf */; };
+		AA35AD93819E485F8EEB968F /* Circe-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8CD853A40D904105AE466E2F /* Circe-Bold.ttf */; };
 		BC31F0B62CCD2453E7057DBC /* libPods-PopcornBooks-tvOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F387D3827C27612E86D634E6 /* libPods-PopcornBooks-tvOS.a */; };
 		D9332B0510DA1BB4D64D378A /* libPods-PopcornBooks-tvOSTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E8136E1262C5DDEFA90FCA20 /* libPods-PopcornBooks-tvOSTests.a */; };
-		AA35AD93819E485F8EEB968F /* Circe-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8CD853A40D904105AE466E2F /* Circe-Bold.ttf */; };
-		8E4F32D5583B4EE19857DE36 /* Circe-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = DDEE998158CC4A50B74C9187 /* Circe-ExtraBold.ttf */; };
-		F293CC4D36FF46BE9D955505 /* Circe-ExtraLight.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 380F2EB86C9C47089F9212F3 /* Circe-ExtraLight.ttf */; };
-		0B9770FC8B00402C993119B0 /* Circe-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 89F22A933A5C4CE089663D32 /* Circe-Light.ttf */; };
 		E33820361947424895D07778 /* Circe-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AAE006DAC1C845FC946BD1A4 /* Circe-Regular.ttf */; };
-		045C6BC5434745BBAB2F184B /* Circe-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = EE9540706C5C4D02A530B03B /* Circe-Thin.ttf */; };
+		F293CC4D36FF46BE9D955505 /* Circe-ExtraLight.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 380F2EB86C9C47089F9212F3 /* Circe-ExtraLight.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -66,13 +66,17 @@
 		2D02E47B1E0B4A5D006451C7 /* PopcornBooks-tvOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "PopcornBooks-tvOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2D02E4901E0B4A5D006451C7 /* PopcornBooks-tvOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "PopcornBooks-tvOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		316A4CB190115B30068EDAB1 /* libPods-PopcornBooks-PopcornBooksTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-PopcornBooks-PopcornBooksTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		380F2EB86C9C47089F9212F3 /* Circe-ExtraLight.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Circe-ExtraLight.ttf"; path = "../src/assets/fonts/Circe-ExtraLight.ttf"; sourceTree = "<group>"; };
 		5B4F95C64B24FD7C862E279B /* libPods-PopcornBooks.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-PopcornBooks.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		779DDA4DBB7FED38B9645DAD /* Pods-PopcornBooks-PopcornBooksTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PopcornBooks-PopcornBooksTests.debug.xcconfig"; path = "Target Support Files/Pods-PopcornBooks-PopcornBooksTests/Pods-PopcornBooks-PopcornBooksTests.debug.xcconfig"; sourceTree = "<group>"; };
 		7F4FFA72B3C642CBBF15F391 /* MaterialIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = MaterialIcons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/MaterialIcons.ttf"; sourceTree = "<group>"; };
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = PopcornBooks/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		89F22A933A5C4CE089663D32 /* Circe-Light.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Circe-Light.ttf"; path = "../src/assets/fonts/Circe-Light.ttf"; sourceTree = "<group>"; };
 		8C538AD6FB1F42B2B0B0BC4A /* EvilIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = EvilIcons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/EvilIcons.ttf"; sourceTree = "<group>"; };
+		8CD853A40D904105AE466E2F /* Circe-Bold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Circe-Bold.ttf"; path = "../src/assets/fonts/Circe-Bold.ttf"; sourceTree = "<group>"; };
 		9F85CF526DAA43E29CE27E07 /* Octicons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Octicons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Octicons.ttf"; sourceTree = "<group>"; };
 		A7AA41EA0F824CF2AD224554 /* FontAwesome5_Brands.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = FontAwesome5_Brands.ttf; path = "../node_modules/react-native-vector-icons/Fonts/FontAwesome5_Brands.ttf"; sourceTree = "<group>"; };
+		AAE006DAC1C845FC946BD1A4 /* Circe-Regular.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Circe-Regular.ttf"; path = "../src/assets/fonts/Circe-Regular.ttf"; sourceTree = "<group>"; };
 		AF149C8037CA4749BB043035 /* FontAwesome5_Regular.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = FontAwesome5_Regular.ttf; path = "../node_modules/react-native-vector-icons/Fonts/FontAwesome5_Regular.ttf"; sourceTree = "<group>"; };
 		BB0D55FD3C51E6407AF698FD /* Pods-PopcornBooks-tvOSTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PopcornBooks-tvOSTests.debug.xcconfig"; path = "Target Support Files/Pods-PopcornBooks-tvOSTests/Pods-PopcornBooks-tvOSTests.debug.xcconfig"; sourceTree = "<group>"; };
 		CACA6157A74D470A9DBF420A /* Feather.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Feather.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Feather.ttf"; sourceTree = "<group>"; };
@@ -80,6 +84,7 @@
 		D987A3A24C3F4EFEB67E91D2 /* FontAwesome.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = FontAwesome.ttf; path = "../node_modules/react-native-vector-icons/Fonts/FontAwesome.ttf"; sourceTree = "<group>"; };
 		DC27AC68706749A18B466BCD /* MaterialCommunityIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = MaterialCommunityIcons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/MaterialCommunityIcons.ttf"; sourceTree = "<group>"; };
 		DC5B2542E4CF4C11BF6492EF /* Fontisto.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Fontisto.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Fontisto.ttf"; sourceTree = "<group>"; };
+		DDEE998158CC4A50B74C9187 /* Circe-ExtraBold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Circe-ExtraBold.ttf"; path = "../src/assets/fonts/Circe-ExtraBold.ttf"; sourceTree = "<group>"; };
 		E1BD9D002DDA413DB3B4D963 /* Circe-Regular.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Circe-Regular.otf"; path = "../src/assets/fonts/Circe-Regular.otf"; sourceTree = "<group>"; };
 		E41D8236E21F442CB26DD06F /* SimpleLineIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = SimpleLineIcons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/SimpleLineIcons.ttf"; sourceTree = "<group>"; };
 		E4209D59FA8DFA542288A0FE /* Pods-PopcornBooks-tvOSTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PopcornBooks-tvOSTests.release.xcconfig"; path = "Target Support Files/Pods-PopcornBooks-tvOSTests/Pods-PopcornBooks-tvOSTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -87,15 +92,10 @@
 		E9E8E91EEBEF75CF6CA8CA4B /* Pods-PopcornBooks.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PopcornBooks.release.xcconfig"; path = "Target Support Files/Pods-PopcornBooks/Pods-PopcornBooks.release.xcconfig"; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 		ED2971642150620600B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = Platforms/AppleTVOS.platform/Developer/SDKs/AppleTVOS12.0.sdk/System/Library/Frameworks/JavaScriptCore.framework; sourceTree = DEVELOPER_DIR; };
+		EE9540706C5C4D02A530B03B /* Circe-Thin.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Circe-Thin.ttf"; path = "../src/assets/fonts/Circe-Thin.ttf"; sourceTree = "<group>"; };
 		F11D7286D0294C85AD0FBC8C /* Foundation.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Foundation.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Foundation.ttf"; sourceTree = "<group>"; };
 		F387D3827C27612E86D634E6 /* libPods-PopcornBooks-tvOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-PopcornBooks-tvOS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F80C99500D6449F3AE4D5E1B /* Zocial.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Zocial.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Zocial.ttf"; sourceTree = "<group>"; };
-		8CD853A40D904105AE466E2F /* Circe-Bold.ttf */ = {isa = PBXFileReference; name = "Circe-Bold.ttf"; path = "../src/assets/fonts/Circe-Bold.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
-		DDEE998158CC4A50B74C9187 /* Circe-ExtraBold.ttf */ = {isa = PBXFileReference; name = "Circe-ExtraBold.ttf"; path = "../src/assets/fonts/Circe-ExtraBold.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
-		380F2EB86C9C47089F9212F3 /* Circe-ExtraLight.ttf */ = {isa = PBXFileReference; name = "Circe-ExtraLight.ttf"; path = "../src/assets/fonts/Circe-ExtraLight.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
-		89F22A933A5C4CE089663D32 /* Circe-Light.ttf */ = {isa = PBXFileReference; name = "Circe-Light.ttf"; path = "../src/assets/fonts/Circe-Light.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
-		AAE006DAC1C845FC946BD1A4 /* Circe-Regular.ttf */ = {isa = PBXFileReference; name = "Circe-Regular.ttf"; path = "../src/assets/fonts/Circe-Regular.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
-		EE9540706C5C4D02A530B03B /* Circe-Thin.ttf */ = {isa = PBXFileReference; name = "Circe-Thin.ttf"; path = "../src/assets/fonts/Circe-Thin.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -354,6 +354,7 @@
 					};
 					13B07F861A680F5B00A75B9A = {
 						LastSwiftMigration = 1120;
+						ProvisioningStyle = Manual;
 					};
 					2D02E47A1E0B4A5D006451C7 = {
 						CreatedOnToolsVersion = 8.2.1;
@@ -784,7 +785,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = "";
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = PopcornBooks/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -795,6 +798,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = PopcornBooks;
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
@@ -807,7 +811,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = PopcornBooks/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = (
@@ -817,6 +823,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = PopcornBooks;
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
 			};

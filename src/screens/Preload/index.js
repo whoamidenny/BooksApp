@@ -7,6 +7,88 @@ import styles from './styles';
 import {colors} from '../../constants';
 import {scaledSize} from '../../styles';
 
+const categories = [
+  {id: 0, category: 'Action & Adventure', underCategories: []},
+  {id: 1, category: 'Christian', underCategories: []},
+  {id: 2, category: 'Crime', underCategories: []},
+  {id: 3, category: 'Cultural Heritage', underCategories: []},
+
+  {id: 4, category: 'Dystopian', underCategories: []},
+  {id: 5, category: 'Erotica', underCategories: []},
+  {
+    id: 6,
+    category: 'Fairy Tales, Folk Tales, Legends & Mythology',
+    underCategories: [],
+  },
+  {id: 7, category: 'Family Life/Slice of Life', underCategories: []},
+
+  {
+    id: 8,
+    category: 'Fantasy',
+    underCategories: [
+      {id: 0, category: 'Epic'},
+      {id: 1, category: 'Dark'},
+      {id: 2, category: 'Gamelit'},
+    ],
+  },
+  {id: 9, category: 'Gay/Lesbian', underCategories: []},
+  {
+    id: 10,
+    category: 'Mystery',
+    underCategories: [
+      {id: 0, category: 'Cozy'},
+      {id: 1, category: 'Noir'},
+    ],
+  },
+  {
+    id: 11,
+    category: 'Romance',
+    underCategories: [
+      {id: 0, category: 'Contemporary'},
+      {id: 1, category: 'Reverse Harem'},
+      {id: 2, category: 'Paranormal/Omegaverse'},
+      {id: 3, category: 'LGBT'},
+      {id: 4, category: 'Historical'},
+      {
+        id: 5,
+        category: 'High',
+        underCategories: [{id: 0, category: 'Fantasy/Sci-fi'}],
+      },
+    ],
+  },
+  {
+    id: 12,
+    category: 'Science',
+    underCategories: [
+      {
+        id: 0,
+        category: 'Fiction',
+        underCategories: [
+          {id: 0, category: 'General'},
+          {id: 1, category: 'Space Opera'},
+          {id: 2, category: 'Hard'},
+        ],
+      },
+    ],
+  },
+  {
+    id: 13,
+    category: 'Thrillers',
+    underCategories: [
+      {id: 0, category: 'Crime'},
+      {
+        id: 1,
+        category: 'Federal',
+        underCategories: [{id: 0, category: 'Agent/Operative'}],
+      },
+      {id: 2, category: 'Legal'},
+      {id: 3, category: 'Sea Adventures'},
+    ],
+  },
+  {id: 14, category: 'War & Military'},
+  {id: 15, category: 'Westerns'},
+];
+
 class Preload extends Component {
   constructor(props) {
     super(props);

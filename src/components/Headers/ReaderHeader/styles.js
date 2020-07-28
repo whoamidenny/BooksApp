@@ -24,4 +24,15 @@ export default EStyleSheet.create({
     fontSize: scaledSize(40),
     color: '$headerText',
   },
+  headerIcon: {
+    width: scaledSize(64),
+    height: scaledSize(64),
+    marginHorizontal: scaledSize(25),
+  },
+  rightBlock: {
+    flex: 1,
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'flex-end',
+  },
 });
