@@ -18,10 +18,12 @@ export default EStyleSheet.create({
   book: {
     fontFamily: fonts.circeBold,
     fontSize: scaledSize(30),
+    color: '$regularText',
   },
   author: {
     fontFamily: fonts.circeRegular,
     fontSize: scaledSize(26),
+    color: '$regularText',
   },
   container: {
     flex: 1,

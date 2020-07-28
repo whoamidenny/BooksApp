@@ -15,4 +15,6 @@ export default {
   $profileBlockBackground: 'rgb(74, 131, 190)',
   $messageBackground: 'rgba(255,255,255, 0.7)',
   $messageText: '#0b1e35',
+  $regularText: '#0b1e35',
+  $libraryHeader: '#3884c3',
 };

@@ -55,11 +55,16 @@ function Profile({navigation}) {
     dispatch(
       themeActions.changeThemeMode(themeName === 'light' ? 'dark' : 'light'),
     );
-    if (Platform.OS === 'android' && themeName === 'dark') {
-      StatusBar.setBackgroundColor('#f1f9ff');
+    if (themeName === 'dark') {
+      Platform.OS === 'android'
+        ? StatusBar.setBackgroundColor('#f1f9ff')
+        : null;
       StatusBar.setBarStyle('dark-content');
     } else {
-      StatusBar.setBackgroundColor('#1d2c3f');
+      Platform.OS === 'android'
+        ? StatusBar.setBackgroundColor('#1d2c3f')
+        : null;
+
       StatusBar.setBarStyle('light-content');
     }
 
