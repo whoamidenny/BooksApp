@@ -1,5 +1,12 @@
 import React, {useState} from 'react';
-import {View, SafeAreaView, Text, FlatList, Image} from 'react-native';
+import {
+  View,
+  SafeAreaView,
+  Text,
+  FlatList,
+  Image,
+  TouchableOpacity,
+} from 'react-native';
 import {SearchInput} from '../../Inputs';
 
 import styles from './styles';
@@ -10,7 +17,7 @@ const list = [1, 2, 3, 4, 5];
 
 const RenderItem = ({item, index}) => {
   return (
-    <View
+    <TouchableOpacity
       style={index === 0 ? styles.firstItemContainer : styles.itemContainer}>
       <Image
         style={styles.imageStyle}
@@ -21,7 +28,7 @@ const RenderItem = ({item, index}) => {
       />
       <Text style={styles.bookNameStyle}>Laborum essepter</Text>
       <Text style={styles.authorNameStyle}>George Perry</Text>
-    </View>
+    </TouchableOpacity>
   );
 };
 
@@ -32,6 +39,7 @@ function HorizontalBooksList(props) {
       <FlatList
         horizontal
         data={list}
+        keyExtractor={(item, index) => index.toString()}
         showsHorizontalScrollIndicator={false}
         renderItem={({item, index}) => <RenderItem item={item} index={index} />}
       />

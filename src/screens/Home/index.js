@@ -1,6 +1,6 @@
 import React, {useEffect} from 'react';
 
-import {View, Text} from 'react-native';
+import {View, Text, ScrollView} from 'react-native';
 
 import {HomeHeader} from '../../components/Headers';
 import {HorizontalBooksList} from '../../components/Lists';
@@ -16,10 +16,12 @@ function Home({navigation}) {
   return (
     <View style={styles.container}>
       <HomeHeader />
-      <View style={styles.contentContainerStyle}>
+      <ScrollView
+        showsVerticalScrollIndicator={false}
+        style={styles.contentContainerStyle}>
         <HorizontalBooksList />
         <HorizontalBooksList />
-      </View>
+      </ScrollView>
     </View>
   );
 }
