@@ -5,4 +5,8 @@ export default EStyleSheet.create({
     flex: 1,
     backgroundColor: '$background',
   },
+  contentContainerStyle: {
+    flex: 1,
+    backgroundColor: '$background',
+  },
 });

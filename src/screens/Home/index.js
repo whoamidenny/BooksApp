@@ -1,8 +1,9 @@
 import React, {useEffect} from 'react';
 
 import {View, Text} from 'react-native';
-import {MainBlock} from '../../components/Blocks';
+
 import {HomeHeader} from '../../components/Headers';
+import {HorizontalBooksList} from '../../components/Lists';
 
 import SplashScreen from 'react-native-splash-screen';
 
@@ -15,7 +16,10 @@ function Home({navigation}) {
   return (
     <View style={styles.container}>
       <HomeHeader />
-      <MainBlock></MainBlock>
+      <View style={styles.contentContainerStyle}>
+        <HorizontalBooksList />
+        <HorizontalBooksList />
+      </View>
     </View>
   );
 }
