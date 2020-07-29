@@ -17,4 +17,5 @@ export default {
   $messageText: '#0b1e35',
   $regularText: '#0b1e35',
   $libraryHeader: '#3884c3',
+  $tagsColor: '#f6dd63',
 };

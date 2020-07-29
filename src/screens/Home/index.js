@@ -3,7 +3,11 @@ import React, {useEffect} from 'react';
 import {View, Text, ScrollView} from 'react-native';
 
 import {HomeHeader} from '../../components/Headers';
-import {HorizontalBooksList} from '../../components/Lists';
+import {
+  HorizontalBooksList,
+  HorizontalSmallBooksList,
+  HorizontalTagsList,
+} from '../../components/Lists';
 
 import SplashScreen from 'react-native-splash-screen';
 
@@ -20,7 +24,8 @@ function Home({navigation}) {
         showsVerticalScrollIndicator={false}
         style={styles.contentContainerStyle}>
         <HorizontalBooksList />
-        <HorizontalBooksList />
+        <HorizontalTagsList />
+        <HorizontalSmallBooksList />
       </ScrollView>
     </View>
   );
