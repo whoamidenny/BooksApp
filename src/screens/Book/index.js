@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 
-import {View, Text, FlatList, Image, ScrollView} from 'react-native';
+import {View, Text, Image, ScrollView, TouchableOpacity} from 'react-native';
 import * as Progress from 'react-native-progress';
 import {BaseBlock} from '../../components/Blocks';
 import {SmallButton} from '../../components/Buttons';
@@ -30,9 +30,11 @@ function Book({navigation}) {
             <View style={styles.blockContainerStyle}>
               <View>
                 <Text style={styles.bookNameStyle}>Comodo exepturi</Text>
-                <Text style={styles.bookAuthorNameStyle}>
-                  by Oliver Knight{' '}
-                </Text>
+                <TouchableOpacity onPress={() => navigation.navigate('Author')}>
+                  <Text style={styles.bookAuthorNameStyle}>
+                    by Oliver Knight
+                  </Text>
+                </TouchableOpacity>
               </View>
               <Icon
                 name="bookmark-outline"

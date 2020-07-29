@@ -7,7 +7,7 @@ target 'PopcornBooks' do
   config = use_native_modules!
 
   use_react_native!(:path => config["reactNativePath"])
-
+  
   target 'PopcornBooksTests' do
     inherit! :complete
     # Pods for testing
@@ -24,7 +24,7 @@ target 'PopcornBooks' do
 end
 
 target 'PopcornBooks-tvOS' do
-  # Pods for PopcornBooks-tvOS
+  # Pods for PopcornBooks-tvOScd 
 
   target 'PopcornBooks-tvOSTests' do
     inherit! :search_paths
