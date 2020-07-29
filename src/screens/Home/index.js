@@ -17,13 +17,18 @@ function Home({navigation}) {
   useEffect(() => {
     SplashScreen.hide();
   }, []);
+
+  const onPressBook = () => {
+    navigation.navigate('Book');
+  };
+
   return (
     <View style={styles.container}>
       <HomeHeader />
       <ScrollView
         showsVerticalScrollIndicator={false}
         style={styles.contentContainerStyle}>
-        <HorizontalBooksList />
+        <HorizontalBooksList onPressBook={onPressBook} />
         <HorizontalTagsList />
         <HorizontalSmallBooksList />
       </ScrollView>

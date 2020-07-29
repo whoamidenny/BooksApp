@@ -4,7 +4,7 @@ import {Image} from 'react-native';
 
 const Tab = createBottomTabNavigator();
 
-import Home from '../screens/Home';
+import HomeStack from './HomeStack';
 import Notifications from '../screens/Notifications';
 import Profile from '../screens/Profile';
 import Library from './LibraryStack';
@@ -26,7 +26,7 @@ function MainBottomNavigation() {
       screenOptions={{unmountOnBlur: true}}>
       <Tab.Screen
         name="Home"
-        component={Home}
+        component={HomeStack}
         options={{
           tabBarIcon: () =>
             theme.$theme === 'light' ? (

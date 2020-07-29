@@ -5,9 +5,10 @@ import styles from './styles';
 
 const list = [1, 2, 3, 4, 5];
 
-const RenderItem = ({item, index}) => {
+const RenderItem = ({item, index, onPress}) => {
   return (
     <TouchableOpacity
+      onPress={onPress}
       style={index === 0 ? styles.firstItemContainer : styles.itemContainer}>
       <Image
         style={styles.imageStyle}
@@ -31,7 +32,9 @@ function HorizontalBooksList(props) {
         data={list}
         keyExtractor={(item, index) => index.toString()}
         showsHorizontalScrollIndicator={false}
-        renderItem={({item, index}) => <RenderItem item={item} index={index} />}
+        renderItem={({item, index}) => (
+          <RenderItem item={item} index={index} onPress={props.onPressBook} />
+        )}
       />
     </View>
   );

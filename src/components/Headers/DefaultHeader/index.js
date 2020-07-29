@@ -18,7 +18,7 @@ function DefaultHeader({title, rightTitle}) {
 
   return (
     <View style={styles.container}>
-      <View>
+      <View style={{flex: 2, alignItems: 'flex-start'}}>
         <Icon
           name="chevron-left"
           type="fontawesome"
@@ -27,10 +27,10 @@ function DefaultHeader({title, rightTitle}) {
           onPress={onPressBack}
         />
       </View>
-      <View style={{alignItems: 'center'}}>
+      <View style={{alignItems: 'center', flex: 6}}>
         <Text style={styles.title}>{title}</Text>
       </View>
-      <View>
+      <View style={{flex: 2, alignItems: 'flex-end'}}>
         <Text style={styles.rightText}>{rightTitle}</Text>
       </View>
     </View>
