@@ -5,7 +5,7 @@ import {fonts} from '../../../constants';
 
 export default EStyleSheet.create({
   container: {
-    backgroundColor: '#3884c3',
+    backgroundColor: '$headerHomeBackground',
     paddingHorizontal: scaledSize(82),
     paddingVertical: scaledSize(25),
   },

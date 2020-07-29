@@ -19,4 +19,5 @@ export default {
   $libraryHeader: '#0b1e35',
   $tagsColor: '#f6dd63',
   $modalBackground: '#1d2c3f',
+  $headerHomeBackground: '#0b1e35',
 };
