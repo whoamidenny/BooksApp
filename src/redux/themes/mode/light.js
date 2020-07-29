@@ -17,4 +17,6 @@ export default {
   $messageText: '#0b1e35',
   $regularText: '#0b1e35',
   $libraryHeader: '#3884c3',
+  $modalBackground: '#fdfeff',
+  $icon: '#0b1e35',
 };

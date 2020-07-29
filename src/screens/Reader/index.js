@@ -1,7 +1,16 @@
 import React, {Component} from 'react';
 
-import {View, SafeAreaView, Text, Dimensions, FlatList} from 'react-native';
+import {
+  View,
+  SafeAreaView,
+  Text,
+  Dimensions,
+  FlatList,
+  Platform,
+  StatusBar,
+} from 'react-native';
 import * as Progress from 'react-native-progress';
+import {connect} from 'react-redux';
 
 import {ReaderHeader} from '../../components/Headers';
 import {BaseBlock} from '../../components/Blocks';
@@ -42,6 +51,17 @@ class Reader extends Component {
     };
   }
 
+  componentDidMount() {
+    const {theme} = this.props;
+
+    if (Platform.OS === 'android') {
+      StatusBar.setBackgroundColor(theme.$background);
+    }
+    StatusBar.setBarStyle(
+      theme.$theme === 'light' ? 'dark-content' : 'light-content',
+    );
+  }
+
   onViewableItemsChanged = ({viewableItems, changed}) => {
     const {screens, book} = this.state;
     const visibleIndex = viewableItems[0].index;
@@ -77,6 +97,7 @@ class Reader extends Component {
                 <Text style={styles.text}>{item.page}</Text>
               </View>
             )}
+            keyExtractor={(item, index) => index.toString()}
           />
         </View>
         <View style={{alignItems: 'center'}}>
@@ -97,4 +118,10 @@ class Reader extends Component {
   }
 }
 
-export default Reader;
+const mapStateToProps = (state) => {
+  return {
+    theme: state.theme,
+  };
+};
+
+export default connect(mapStateToProps, null)(Reader);
