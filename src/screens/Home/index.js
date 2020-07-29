@@ -1,7 +1,13 @@
 import React, {useEffect} from 'react';
 
-import {View, Text} from 'react-native';
-import {MainBlock} from '../../components/Blocks';
+import {View, Text, ScrollView} from 'react-native';
+
+import {HomeHeader} from '../../components/Headers';
+import {
+  HorizontalBooksList,
+  HorizontalSmallBooksList,
+  HorizontalTagsList,
+} from '../../components/Lists';
 
 import SplashScreen from 'react-native-splash-screen';
 
@@ -11,10 +17,18 @@ function Home({navigation}) {
   useEffect(() => {
     SplashScreen.hide();
   }, []);
+
   return (
-    <MainBlock>
-      <Text>Home</Text>
-    </MainBlock>
+    <View style={styles.container}>
+      <HomeHeader />
+      <ScrollView
+        showsVerticalScrollIndicator={false}
+        style={styles.contentContainerStyle}>
+        <HorizontalBooksList />
+        <HorizontalTagsList />
+        <HorizontalSmallBooksList />
+      </ScrollView>
+    </View>
   );
 }
 

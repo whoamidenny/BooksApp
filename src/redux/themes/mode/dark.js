@@ -17,6 +17,6 @@ export default {
   $messageText: '#ffffff',
   $regularText: '#ffffff',
   $libraryHeader: '#0b1e35',
+  $tagsColor: '#f6dd63',
   $modalBackground: '#1d2c3f',
-  $icon: '#ffffff',
 };
