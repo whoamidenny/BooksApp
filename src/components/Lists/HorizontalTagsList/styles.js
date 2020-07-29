@@ -21,6 +21,7 @@ export default EStyleSheet.create({
   },
   tagsContainer: {
     marginVertical: scaledSize(10),
+    paddingRight: scaledSize(40),
   },
 
   titleStyle: {
@@ -29,5 +30,15 @@ export default EStyleSheet.create({
     color: '$headerText',
     marginLeft: scaledSize(80),
     marginBottom: scaledSize(10),
+  },
+  category: {
+    fontFamily: fonts.circeRegular,
+    fontSize: scaledSize(40),
+    color: '$regularText',
+  },
+  categorySelected: {
+    fontFamily: fonts.circeBold,
+    fontSize: scaledSize(40),
+    color: '#0b1e35',
   },
 });

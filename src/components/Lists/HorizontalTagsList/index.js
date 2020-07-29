@@ -12,7 +12,9 @@ const RenderTagItem = ({item, index, onPressTag}) => {
           ? [styles.tagItemContainer, styles.tagSelected]
           : styles.tagItemContainer
       }>
-      <Text>{item.title}</Text>
+      <Text style={!item.selected ? styles.category : styles.categorySelected}>
+        {item.title}
+      </Text>
     </TouchableOpacity>
   );
 };

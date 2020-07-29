@@ -13,7 +13,9 @@ const SearchInput = ({...props}) => (
     inputContainerStyle={styles.inpContainer}
     containerStyle={styles.container}
     placeholder="Search for a book title or genre"
-    rightIcon={<Icon name="search" type="ionicon" size={20} />}
+    rightIcon={
+      <Icon name="search" type="ionicon" size={20} color={'#0b1e35'} />
+    }
     rightIconContainerStyle={styles.rightIconContainerStyle}
   />
 );

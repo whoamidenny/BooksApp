@@ -18,4 +18,6 @@ export default {
   $regularText: '#0b1e35',
   $libraryHeader: '#3884c3',
   $tagsColor: '#f6dd63',
+  $modalBackground: '#ffffff',
+  $headerHomeBackground: '#3884c3',
 };

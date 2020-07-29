@@ -7,6 +7,8 @@ import {
   Image,
   SafeAreaView,
   TouchableOpacity,
+  Platform,
+  StatusBar,
 } from 'react-native';
 
 import {LibraryHeader} from '../../components/Headers';
@@ -14,6 +16,7 @@ import {LibraryHeader} from '../../components/Headers';
 import styles from './styles';
 
 import {scaledSize} from '../../styles';
+import {useSelector} from 'react-redux';
 
 function UserLibrary({navigation}) {
   const [booksList, setBooksList] = useState([
@@ -48,6 +51,7 @@ function UserLibrary({navigation}) {
       image: require('../../assets/images/static/5.png'),
     },
   ]);
+  const theme = useSelector((state) => state.theme);
 
   useEffect(() => {
     const newBooksList = [...booksList];
@@ -64,6 +68,18 @@ function UserLibrary({navigation}) {
 
     setBooksList(newBooksList);
   }, []);
+
+  useEffect(() => {
+    const unsubscribe = navigation.addListener('focus', () => {
+      // do something
+      if (Platform.OS === 'android') {
+        StatusBar.setBackgroundColor(theme.$libraryHeader);
+        StatusBar.setBarStyle('light-content');
+      }
+    });
+
+    return unsubscribe;
+  }, [navigation]);
 
   function onPressBook() {
     navigation.navigate('Reader');

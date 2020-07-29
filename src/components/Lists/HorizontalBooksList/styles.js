@@ -7,6 +7,7 @@ export default EStyleSheet.create({
     flex: 1,
     backgroundColor: '$background',
     marginVertical: scaledSize(40),
+    paddingRight: scaledSize(40),
   },
   itemContainer: {
     marginRight: scaledSize(40),

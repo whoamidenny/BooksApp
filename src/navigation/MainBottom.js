@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {Image} from 'react-native';
 
@@ -14,6 +14,7 @@ import {useSelector} from 'react-redux';
 
 function MainBottomNavigation() {
   const theme = useSelector((state) => state.theme);
+
   return (
     <Tab.Navigator
       tabBarOptions={{

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 
 import {View, Text} from 'react-native';
 import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
@@ -15,6 +15,7 @@ import {DefaultInput} from '../../../components/Inputs';
 import {DefaultCheckBox} from '../../../components/CheckBoxes';
 
 function SignIn({navigation}) {
+  const [saveUser, setSaveUser] = useState(false);
   function onPressForgetPassword() {
     navigation.navigate('ForgetPassword');
   }
@@ -29,7 +30,11 @@ function SignIn({navigation}) {
             <DefaultInput placeholder="Email" />
             <DefaultInput placeholder="Password" />
             <View style={styles.row}>
-              <DefaultCheckBox checked title="Stay Logged In" />
+              <DefaultCheckBox
+                checked={saveUser}
+                title="Stay Logged In"
+                onPress={() => setSaveUser(!saveUser)}
+              />
               <Text style={styles.regularText} onPress={onPressForgetPassword}>
                 Forgot Your Password
               </Text>
