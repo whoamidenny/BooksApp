@@ -20,4 +20,6 @@ export default {
   $tagsColor: '#f6dd63',
   $modalBackground: '#ffffff',
   $headerHomeBackground: '#3884c3',
+  $shadowStart: 'rgba(241, 249, 255, 0.1)',
+  $shadowEnd: 'rgba(241, 249, 255, 1)',
 };

@@ -1,6 +1,6 @@
 import React, {useEffect} from 'react';
 
-import {View, Text, ScrollView} from 'react-native';
+import {View, Text, ScrollView, StatusBar} from 'react-native';
 
 import {HomeHeader} from '../../components/Headers';
 import {
@@ -12,8 +12,10 @@ import {
 import SplashScreen from 'react-native-splash-screen';
 
 import styles from './styles';
+import {useSelector} from 'react-redux';
 
 function Home({navigation}) {
+  const theme = useSelector((state) => state.theme);
   useEffect(() => {
     SplashScreen.hide();
   }, []);
@@ -24,7 +26,8 @@ function Home({navigation}) {
 
   return (
     <View style={styles.container}>
-      <HomeHeader />
+      <StatusBar barStyle="light-content" backgroundColor={theme.$background} />
+      <HomeHeader navigation={navigation} />
       <ScrollView
         showsVerticalScrollIndicator={false}
         style={styles.contentContainerStyle}>

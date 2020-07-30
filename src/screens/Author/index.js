@@ -11,9 +11,11 @@ import {DefaultHeader} from '../../components/Headers';
 import {scaledSize} from '../../styles';
 import {Icon} from 'react-native-elements';
 import {colors} from '../../constants';
+import {useSelector} from 'react-redux';
 
 function Author({navigation}) {
   const [readMore, setReadMore] = useState(false);
+  const theme = useSelector((state) => state.theme);
   return (
     <BaseBlock>
       <DefaultHeader title="Oliver Knight" />
@@ -71,7 +73,7 @@ function Author({navigation}) {
             </Text>
             {!readMore && (
               <LinearGradient
-                colors={['rgba(241, 249, 255, 0.1)', 'rgba(241, 249, 255, 1)']}
+                colors={[theme.$shadowStart, theme.$shadowEnd]}
                 style={styles.linearGradient}
               />
             )}

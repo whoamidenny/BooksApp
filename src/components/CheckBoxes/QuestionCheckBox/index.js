@@ -3,13 +3,14 @@ import {CheckBox, Icon} from 'react-native-elements';
 import styles from './styles';
 import {colors} from '../../../constants';
 import {View, Text} from 'react-native';
+import {scaledSize} from '../../../styles';
 
-const QuestionCheckBox = ({choice, onPress}) => (
+const QuestionCheckBox = ({choice, onPress, titleStyle, iconStyle}) => (
   <View style={styles.container}>
-    <Text style={styles.title}>{choice.item.title}</Text>
+    <Text style={[styles.title, titleStyle]}>{choice.item.title}</Text>
     <CheckBox
       containerStyle={styles.checkBoxContainerStyle}
-      wrapperStyle={styles.checkBoxWrapperStyle}
+      wrapperStyle={[styles.checkBoxWrapperStyle, iconStyle]}
       checkedIcon={
         <Icon
           name="check-bold"
@@ -18,7 +19,6 @@ const QuestionCheckBox = ({choice, onPress}) => (
         />
       }
       uncheckedIcon={null}
-      size={40}
       checked={choice.item.checked}
       onPress={() => onPress(choice.item.id)}
     />

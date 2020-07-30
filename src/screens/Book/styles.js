@@ -56,4 +56,9 @@ export default EStyleSheet.create({
   bottomContainer: {
     paddingHorizontal: scaledSize(80),
   },
+  views: {
+    fontFamily: fonts.circeRegular,
+    fontSize: scaledSize(38),
+    color: '$regularText',
+  },
 });

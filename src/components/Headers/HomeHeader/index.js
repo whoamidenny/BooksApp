@@ -33,6 +33,7 @@ function HomeHeader(props) {
             color="white"
             size={scaledSize(70)}
             containerStyle={styles.settingsIconContainer}
+            onPress={() => props.navigation.navigate('Filters')}
           />
         </View>
       </SafeAreaView>

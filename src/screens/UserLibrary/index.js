@@ -74,8 +74,8 @@ function UserLibrary({navigation}) {
       // do something
       if (Platform.OS === 'android') {
         StatusBar.setBackgroundColor(theme.$libraryHeader);
-        StatusBar.setBarStyle('light-content');
       }
+      StatusBar.setBarStyle('light-content');
     });
 
     return unsubscribe;
@@ -87,6 +87,7 @@ function UserLibrary({navigation}) {
 
   return (
     <View style={styles.container}>
+      <StatusBar barStyle="light-content" />
       <LibraryHeader />
       <View style={{flex: 1}}>
         <FlatList

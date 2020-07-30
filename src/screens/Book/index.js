@@ -11,9 +11,11 @@ import {DefaultHeader} from '../../components/Headers';
 import {scaledSize} from '../../styles';
 import {Icon} from 'react-native-elements';
 import {colors} from '../../constants';
+import {useSelector} from 'react-redux';
 
 function Book({navigation}) {
   const [progress, setProgress] = useState(0.4);
+  const theme = useSelector((state) => state.theme);
   return (
     <BaseBlock>
       <DefaultHeader title="Library" />
@@ -53,8 +55,13 @@ function Book({navigation}) {
                 height={scaledSize(12)}
                 style={{height: scaledSize(12)}}
               />
-              <Icon name="eye" type="feather" size={scaledSize(40)} />
-              <Text>10k</Text>
+              <Icon
+                name="eye"
+                type="feather"
+                size={scaledSize(40)}
+                color={theme.$label}
+              />
+              <Text style={styles.views}>10k</Text>
             </View>
             <View style={styles.tagsContainer}>
               <WrapTagsList />
