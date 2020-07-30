@@ -269,7 +269,7 @@ class Preload extends Component {
                 </Text>
               </View>
             ) : null}
-            <View style={{flex: 1}}>
+            <View>
               <FlatList
                 horizontal
                 showsHorizontalScrollIndicator={false}
@@ -296,6 +296,7 @@ class Preload extends Component {
                           }
                         />
                       )}
+                      keyExtractor={(item, index) => index.toString()}
                     />
                   </View>
                 )}
