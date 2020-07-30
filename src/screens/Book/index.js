@@ -1,6 +1,13 @@
 import React, {useState} from 'react';
 
-import {View, Text, Image, ScrollView, TouchableOpacity} from 'react-native';
+import {
+  View,
+  Text,
+  Image,
+  ScrollView,
+  TouchableOpacity,
+  StatusBar,
+} from 'react-native';
 import * as Progress from 'react-native-progress';
 import {BaseBlock} from '../../components/Blocks';
 import {SmallButton} from '../../components/Buttons';
@@ -18,6 +25,10 @@ function Book({navigation}) {
   const theme = useSelector((state) => state.theme);
   return (
     <BaseBlock>
+      <StatusBar
+        barStyle={theme.$theme === 'light' ? 'dark-content' : 'light-content'}
+        backgroundColor={theme.$background}
+      />
       <DefaultHeader title="Library" />
       <ScrollView style={styles.containerStyle}>
         <View style={styles.topBlock}>

@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 
-import {View, Text, Image, ScrollView} from 'react-native';
+import {View, Text, Image, ScrollView, StatusBar} from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 import {BaseBlock} from '../../components/Blocks';
 import {SmallButton} from '../../components/Buttons';
@@ -18,6 +18,10 @@ function Author({navigation}) {
   const theme = useSelector((state) => state.theme);
   return (
     <BaseBlock>
+      <StatusBar
+        barStyle={theme.$theme === 'light' ? 'dark-content' : 'light-content'}
+        backgroundColor={theme.$background}
+      />
       <DefaultHeader title="Oliver Knight" />
       <ScrollView style={styles.containerStyle}>
         <View style={styles.topBlock}>

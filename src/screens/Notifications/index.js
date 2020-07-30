@@ -1,11 +1,12 @@
 import React from 'react';
 
-import {View, Text, FlatList} from 'react-native';
+import {View, Text, FlatList, StatusBar} from 'react-native';
 import {MainBlock, BaseBlock} from '../../components/Blocks';
 
 import styles from './styles';
 import {DefaultHeader} from '../../components/Headers';
-import {scaledSize} from '../../styles';
+
+import {useSelector} from 'react-redux';
 
 const notifications = [
   {
@@ -23,8 +24,13 @@ const notifications = [
 ];
 
 function Profile({navigation}) {
+  const theme = useSelector((state) => state.theme);
   return (
     <BaseBlock>
+      <StatusBar
+        barStyle={theme.$theme === 'light' ? 'dark-content' : 'light-content'}
+        backgroundColor={theme.$background}
+      />
       <DefaultHeader title="Notifications" rightTitle="CLEAR" />
       <FlatList
         data={notifications}

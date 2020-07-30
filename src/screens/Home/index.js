@@ -1,6 +1,6 @@
 import React, {useEffect} from 'react';
 
-import {View, Text, ScrollView, StatusBar} from 'react-native';
+import {View, Text, ScrollView, StatusBar, Platform} from 'react-native';
 
 import {HomeHeader} from '../../components/Headers';
 import {
@@ -20,13 +20,24 @@ function Home({navigation}) {
     SplashScreen.hide();
   }, []);
 
+  useEffect(() => {
+    const unsubscribe = navigation.addListener('focus', () => {
+      // do something
+      if (Platform.OS === 'android') {
+        StatusBar.setBackgroundColor(theme.$libraryHeader);
+      }
+      StatusBar.setBarStyle('light-content');
+    });
+
+    return unsubscribe;
+  }, [navigation]);
+
   const onPressBook = () => {
     navigation.navigate('Book');
   };
 
   return (
     <View style={styles.container}>
-      <StatusBar barStyle="light-content" backgroundColor={theme.$background} />
       <HomeHeader navigation={navigation} />
       <ScrollView
         showsVerticalScrollIndicator={false}

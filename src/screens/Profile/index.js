@@ -86,6 +86,10 @@ function Profile({navigation}) {
 
   return (
     <BaseBlock>
+      <StatusBar
+        barStyle={theme.$theme === 'light' ? 'dark-content' : 'light-content'}
+        backgroundColor={theme.$background}
+      />
       <DefaultHeader title="Profile" rightTitle="SAVE" />
       <KeyboardAwareScrollView contentContainerStyle={styles.containerScroll}>
         <View style={styles.profileContainer}>
