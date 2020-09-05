@@ -12,25 +12,30 @@ import {
 import SplashScreen from 'react-native-splash-screen';
 
 import styles from './styles';
-import {useSelector} from 'react-redux';
+import {useSelector, useDispatch} from 'react-redux';
+import {catalogActions} from '../../redux/catalog';
 
 function Home({navigation}) {
+  const dispatch = useDispatch();
   const theme = useSelector((state) => state.theme);
   useEffect(() => {
     SplashScreen.hide();
+    getCatalogs();
   }, []);
 
   useEffect(() => {
     const unsubscribe = navigation.addListener('focus', () => {
-      // do something
       if (Platform.OS === 'android') {
         StatusBar.setBackgroundColor(theme.$libraryHeader);
       }
       StatusBar.setBarStyle('light-content');
     });
-
     return unsubscribe;
   }, [navigation]);
+
+  const getCatalogs = () => {
+    dispatch(catalogActions.getCategories());
+  };
 
   const onPressBook = () => {
     navigation.navigate('Book');

@@ -14,7 +14,7 @@ function MainNavigation() {
       screenOptions={{
         headerShown: false,
       }}
-      initialRouteName="Auth">
+      initialRouteName="Home">
       <Stack.Screen name="Auth" component={AuthStack} />
       <Stack.Screen name="Home" component={MainBottomNavigation} />
     </Stack.Navigator>

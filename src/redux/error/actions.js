@@ -1,4 +1,3 @@
-
 import * as types from './types';
 
 export const changeFieldInStore = (field, value) => ({
@@ -13,4 +12,3 @@ export const setMessage = (typeMessage, message, active = true) => ({
   message,
   active,
 });
-
