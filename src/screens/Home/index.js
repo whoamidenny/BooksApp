@@ -18,6 +18,8 @@ import {catalogActions} from '../../redux/catalog';
 function Home({navigation}) {
   const dispatch = useDispatch();
   const theme = useSelector((state) => state.theme);
+  const dark = useSelector((state) => state.theme);
+
   useEffect(() => {
     SplashScreen.hide();
     getCatalogs();
@@ -35,6 +37,9 @@ function Home({navigation}) {
 
   const getCatalogs = () => {
     dispatch(catalogActions.getCategories());
+    dispatch(catalogActions.getGenres());
+    dispatch(catalogActions.getAuthors());
+    dispatch(catalogActions.getBooks());
   };
 
   const onPressBook = () => {
