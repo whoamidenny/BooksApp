@@ -16,9 +16,14 @@ export const onSignUp = (data) => (dispatch) => {
     .then((response) => {
       dispatch(setAuthValue('user', response.data));
       dispatch(errorActions.changeFieldInStore('loading', false));
+      return response;
+    })
+    .then((response) => {
       dispatch(
         errorActions.setMessage('success', decodeSuccessMessage(response)),
       );
+
+      data.successAction();
     })
     .catch((error) => {
       dispatch(errorActions.changeFieldInStore('loading', false));

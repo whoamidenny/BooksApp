@@ -31,7 +31,11 @@ function SignUp({navigation}) {
   const loading = useSelector(errorSelectors.selectLoading());
 
   const onPressRegister = () => {
-    dispatch(authActions.onSignUp({name, email, password}));
+    dispatch(authActions.onSignUp({name, email, password, successAction}));
+  };
+
+  const successAction = () => {
+    navigation.navigate('SignIn');
   };
 
   const setValueToState = (key, value) => {

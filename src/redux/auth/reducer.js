@@ -1,10 +1,10 @@
-
 import * as types from './types';
 
 const initState = {
   user: {},
   loading: true,
   success: false,
+  signUpStatus: false,
 };
 
 const authReducer = (state = initState, action) => {
