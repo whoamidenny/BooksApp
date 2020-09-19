@@ -7,6 +7,7 @@ import styles from './styles';
 const DefaultInput = ({...props}) => (
   <Input
     {...props}
+    autoCapitalize="none"
     renderErrorMessage={false}
     placeholderTextColor="#0b1e35"
     inputStyle={styles.inpStyle}

@@ -6,9 +6,19 @@ export const changeFieldInStore = (field, value) => ({
   value,
 });
 
-export const setMessage = (typeMessage, message, active = true) => ({
+const sendMessage = (typeMessage, message, active) => ({
   type: types.SET_MESSAGE,
   typeMessage,
   message,
   active,
 });
+
+export const setMessage = (typeMessage, message, active = true) => (
+  dispatch,
+) => {
+  dispatch(sendMessage(typeMessage, message, active));
+
+  setTimeout(() => {
+    dispatch(sendMessage(typeMessage, message, false));
+  }, 5000);
+};

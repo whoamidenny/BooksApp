@@ -5,6 +5,7 @@ import {NavigationContainer} from '@react-navigation/native';
 
 import AuthStack from './AuthStack';
 import MainBottomNavigation from './MainBottom';
+import {useSelector} from 'react-redux';
 
 const Stack = createStackNavigator();
 
@@ -13,8 +14,7 @@ function MainNavigation() {
     <Stack.Navigator
       screenOptions={{
         headerShown: false,
-      }}
-      initialRouteName="Home">
+      }}>
       <Stack.Screen name="Auth" component={AuthStack} />
       <Stack.Screen name="Home" component={MainBottomNavigation} />
     </Stack.Navigator>

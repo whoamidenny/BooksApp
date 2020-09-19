@@ -1,10 +1,9 @@
-
-import * as types from "./types";
+import * as types from './types';
 
 const initState = {
   active: false,
-  message: "",
-  type: "error",
+  message: '',
+  typeMessage: 'error',
   loading: false,
 };
 
@@ -13,7 +12,7 @@ const errorReducer = (state = initState, action) => {
     case types.CHANGE_FIELD_IN_STORE: {
       return {
         ...state,
-        [action.field]: action.payload,
+        [action.field]: action.value,
       };
     }
     case types.SET_MESSAGE: {
