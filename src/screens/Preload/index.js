@@ -229,7 +229,8 @@ class Preload extends Component {
     const {navigation} = this.props;
 
     if (currentScreenIndex === 7) {
-      navigation.navigate('Home');
+      console.log(this.state.screens)
+    //  navigation.navigate('Home');
     } else {
       this.flatList.scrollToIndex({
         index: currentScreenIndex + 1,
