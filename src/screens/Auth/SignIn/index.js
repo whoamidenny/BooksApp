@@ -5,21 +5,48 @@ import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
 
 import {DefaultButton} from '../../../components/Buttons';
 import {MainBlock} from '../../../components/Blocks';
+import Loader from '../../../components/Loader';
+import {DefaultInput} from '../../../components/Inputs';
+import {DefaultCheckBox} from '../../../components/CheckBoxes';
 
 import SignInIcon from '../../../assets/images/signin.svg';
 import {scaledSize} from '../../../styles';
 
 import styles from './styles';
 import globalStyles from '../../../styles/globalStyles';
-import {DefaultInput} from '../../../components/Inputs';
-import {DefaultCheckBox} from '../../../components/CheckBoxes';
+
+import {authActions, authSelectors} from '../../../redux/auth';
+import {errorSelectors} from '../../../redux/error';
+import {useSelector, useDispatch} from 'react-redux';
 
 function SignIn({navigation}) {
-  const [saveUser, setSaveUser] = useState(false);
-  function onPressForgetPassword() {
+  const dispatch = useDispatch();
+
+  const loading = useSelector((state) => errorSelectors.selectLoading(state));
+  const stayLogged = useSelector((state) =>
+    authSelectors.selectStayLogged(state),
+  );
+
+  const [email, setEmail] = useState('arthur@fulcrum.rocks');
+  const [password, setPassword] = useState('Fulcrum123~');
+
+  const onPressForgetPassword = () => {
     navigation.navigate('ForgetPassword');
-  }
-  return (
+  };
+
+  const onPressLogin = () => {
+    dispatch(authActions.onSignIn({email, password, onSuccess}));
+  };
+
+  const onPressStayLogged = () => {
+    dispatch(authActions.setAuthValue('stayLogged', !stayLogged));
+  };
+
+  const onSuccess = () => {
+    navigation.navigate('Onboarding');
+  };
+
+  return !loading ? (
     <MainBlock>
       <KeyboardAwareScrollView
         contentContainerStyle={{flexGrow: 1}}
@@ -27,13 +54,22 @@ function SignIn({navigation}) {
         <View style={styles.mainBlock}>
           <Text style={globalStyles.headerText}>Sign In</Text>
           <View>
-            <DefaultInput placeholder="Email" />
-            <DefaultInput placeholder="Password" />
+            <DefaultInput
+              placeholder="Email"
+              value={email}
+              onChangeText={(text) => setEmail(text)}
+            />
+            <DefaultInput
+              secureTextEntry
+              placeholder="Password"
+              value={password}
+              onChangeText={(text) => setPassword(text)}
+            />
             <View style={styles.row}>
               <DefaultCheckBox
-                checked={saveUser}
+                checked={stayLogged}
                 title="Stay Logged In"
-                onPress={() => setSaveUser(!saveUser)}
+                onPress={onPressStayLogged}
               />
               <Text style={styles.regularText} onPress={onPressForgetPassword}>
                 Forgot Your Password
@@ -41,6 +77,7 @@ function SignIn({navigation}) {
             </View>
             <DefaultButton
               title="Login"
+              onPress={onPressLogin}
               containerStyle={{marginVertical: scaledSize(55)}}
             />
           </View>
@@ -61,6 +98,8 @@ function SignIn({navigation}) {
         </View>
       </KeyboardAwareScrollView>
     </MainBlock>
+  ) : (
+    <Loader />
   );
 }
 

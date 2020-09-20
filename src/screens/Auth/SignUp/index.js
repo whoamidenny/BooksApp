@@ -28,13 +28,13 @@ function SignUp({navigation}) {
 
   const dispatch = useDispatch();
 
-  const loading = useSelector(errorSelectors.selectLoading());
+  const loading = useSelector((state) => errorSelectors.selectLoading(state));
 
   const onPressRegister = () => {
-    dispatch(authActions.onSignUp({name, email, password, successAction}));
+    dispatch(authActions.onSignUp({name, email, password, onSuccess}));
   };
 
-  const successAction = () => {
+  const onSuccess = () => {
     navigation.navigate('SignIn');
   };
 

@@ -1,7 +1,11 @@
 import * as types from './types';
 import API, {setToken, deleteToken} from '../../api';
 import {errorActions} from '../error';
-import {decodeErrorResponse, decodeSuccessMessage} from '../../utils';
+import {
+  decodeErrorMessage,
+  decodeErrorResponse,
+  decodeSuccessMessage,
+} from '../../utils';
 
 export const setAuthValue = (field, value) => ({
   type: types.CHANGE_FIELD_IN_STORE,
@@ -23,7 +27,7 @@ export const onSignUp = (data) => (dispatch) => {
         errorActions.setMessage('success', decodeSuccessMessage(response)),
       );
 
-      data.successAction();
+      data.onSuccess();
     })
     .catch((error) => {
       dispatch(errorActions.changeFieldInStore('loading', false));
@@ -32,7 +36,21 @@ export const onSignUp = (data) => (dispatch) => {
 };
 
 export const onSignIn = (data) => (dispatch) => {
-  API.post('');
+  dispatch(errorActions.changeFieldInStore('loading', true));
+
+  API.post('/authentication_token', data)
+    .then((response) => {
+      dispatch(setAuthValue('user', response.data));
+    })
+    .then(() => {
+      dispatch(errorActions.changeFieldInStore('loading', false));
+
+      data.onSuccess();
+    })
+    .catch((error) => {
+      dispatch(errorActions.changeFieldInStore('loading', false));
+      dispatch(errorActions.setMessage('error', decodeErrorMessage(error)));
+    });
 };
 
 export const onLogout = () => (dispatch) => {};

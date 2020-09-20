@@ -2,9 +2,8 @@ import * as types from './types';
 
 const initState = {
   user: {},
-  loading: true,
-  success: false,
-  signUpStatus: false,
+  isOnboardingComplete: false,
+  stayLogged: false,
 };
 
 const authReducer = (state = initState, action) => {
@@ -12,7 +11,7 @@ const authReducer = (state = initState, action) => {
     case types.CHANGE_FIELD_IN_STORE: {
       return {
         ...state,
-        [action.field]: action.payload,
+        [action.field]: action.value,
       };
     }
     default:

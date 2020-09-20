@@ -10,11 +10,14 @@ import setI18nConfig from './i18n';
 
 import light from './redux/themes/mode/light';
 import {StatusBar, Platform} from 'react-native';
+import Loader from './components/Loader';
 
 class App extends Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      loading: true,
+    };
   }
 
   componentWillMount() {
@@ -27,15 +30,24 @@ class App extends Component {
     }
     //Connect theming
     EStyleSheet.build(light);
+
+    setTimeout(() => {
+      this.setState({
+        loading: false,
+      });
+    }, 1000);
   }
 
   render() {
-    return (
+    const {loading} = this.state;
+    return !loading ? (
       <Provider store={store}>
         <ErrorBoundary>
           <AppNavigation />
         </ErrorBoundary>
       </Provider>
+    ) : (
+      <Loader />
     );
   }
 }
