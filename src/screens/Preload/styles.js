@@ -70,4 +70,10 @@ export default EStyleSheet.create({
     justifyContent: 'space-between',
     paddingHorizontal: scaledSize(80),
   },
+  bottomAbsoluteContainer: {
+    position: 'absolute',
+    bottom: 0,
+    left: scaledSize(80),
+    right: scaledSize(80),
+  },
 });

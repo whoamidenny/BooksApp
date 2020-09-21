@@ -8,6 +8,26 @@ export const selectStayLogged = createSelector(
   (authState) => authState.stayLogged,
 );
 
+export const selectLoginStatus = createSelector(
+  [getAuthState],
+  (authState) => authState.stayLogged && authState.loggedIn,
+);
+
+export const selectAuthOrPreload = createSelector(
+  [getAuthState],
+  (authState) => authState.loggedIn && authState.stayLogged,
+);
+
+export const selectOnboardingComplete = createSelector(
+  [getAuthState],
+  (authState) => authState.isOnboardingComplete,
+);
+
+export const selectToken = createSelector(
+  [getAuthState],
+  (authState) => authState.user.token,
+);
+
 export const selectUsername = createSelector(
   [getProfile],
   (profile) => profile.name,

@@ -41,7 +41,7 @@ export const onSignIn = (data) => (dispatch) => {
   API.post('/authentication_token', data)
     .then((response) => {
       dispatch(setAuthValue('user', {...response.data, email: data.email}));
-
+      dispatch(setAuthValue('loggedIn', true));
       setToken(response.data.token);
     })
     .then(() => {
@@ -68,4 +68,8 @@ export const getUserProfile = () => (dispatch, getState) => {
     .catch((error) => {
       dispatch(errorActions.setMessage('error', decodeErrorMessage(error)));
     });
+};
+
+export const setCompletePreload = () => (dispatch) => {
+  dispatch(setAuthValue('isOnboardingComplete', true));
 };

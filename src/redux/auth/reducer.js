@@ -1,9 +1,12 @@
 import * as types from './types';
 
 const initState = {
-  user: {},
+  user: {
+    token: null,
+  },
   isOnboardingComplete: false,
   stayLogged: false,
+  loggedIn: false,
   userProfile: {
     name: '',
     email: '',

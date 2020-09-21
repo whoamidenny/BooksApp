@@ -2,6 +2,8 @@ import React, {useEffect} from 'react';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {Image} from 'react-native';
 
+import SplashScreen from 'react-native-splash-screen';
+
 const Tab = createBottomTabNavigator();
 
 import HomeStack from './HomeStack';
@@ -14,7 +16,9 @@ import {useSelector} from 'react-redux';
 
 function MainBottomNavigation() {
   const theme = useSelector((state) => state.theme);
-
+  useEffect(() => {
+    SplashScreen.hide();
+  }, []);
   return (
     <Tab.Navigator
       tabBarOptions={{

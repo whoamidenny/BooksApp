@@ -1,5 +1,5 @@
 import React, {useEffect} from 'react';
-import {View, Text, FlatList} from 'react-native';
+import {View, Text, FlatList, SafeAreaView} from 'react-native';
 
 import QuestionCheckBox from '../../../components/CheckBoxes/QuestionCheckBox';
 import {DefaultButton} from '../../../components/Buttons';
@@ -7,6 +7,7 @@ import {DefaultButton} from '../../../components/Buttons';
 import {useDispatch, useSelector} from 'react-redux';
 import {catalogActions, selectGenres} from '../../../redux/catalog';
 import {selectFilterGenres, filtersActions} from '../../../redux/filters';
+import {authActions} from '../../../redux/auth';
 
 import {isExistInArray, getFormattedList} from '../../../utils';
 
@@ -26,37 +27,37 @@ export default function Preload({navigation}) {
   };
 
   const onPressNext = () => {
+    dispatch(authActions.setCompletePreload());
     navigation.navigate('Home');
   };
 
   return (
-    <View style={styles.renderScreenContainer}>
-      <Text style={styles.question}>
-        Please choose 10 of the following Genres you prefer to read:
-      </Text>
-      <View>
-        <FlatList
-          data={genresList}
-          renderItem={(choice) => {
-            const isExist = isExistInArray(genres, choice.item);
-            return (
-              <QuestionCheckBox
-                choice={choice}
-                checked={isExist}
-                onPress={() => onSelectElement(genres, choice.item, isExist)}
-              />
-            );
-          }}
-          keyExtractor={(item, index) => index.toString()}
-        />
-        <View style={styles.bottomContainer}>
-          <DefaultButton
-            title={'Discover'}
-            onPress={onPressNext}
-            containerStyle={{flex: 1}}
+    <SafeAreaView style={{flex: 1}}>
+      <View style={styles.renderScreenContainer}>
+        <Text style={styles.question}>
+          Please choose 10 of the following Genres you prefer to read:
+        </Text>
+        <View style={{marginBottom: 150}}>
+          <FlatList
+            showsVerticalScrollIndicator={false}
+            data={genresList}
+            renderItem={(choice) => {
+              const isExist = isExistInArray(genres, choice.item);
+              return (
+                <QuestionCheckBox
+                  choice={choice}
+                  checked={isExist}
+                  onPress={() => onSelectElement(genres, choice.item, isExist)}
+                />
+              );
+            }}
+            keyExtractor={(item, index) => index.toString()}
           />
         </View>
+        <View style={styles.bottomAbsoluteContainer}>
+          <DefaultButton title={'Discover'} onPress={onPressNext} />
+        </View>
       </View>
-    </View>
+    </SafeAreaView>
   );
 }
