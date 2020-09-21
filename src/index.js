@@ -2,10 +2,11 @@ import 'react-native-gesture-handler';
 import React, {Component} from 'react';
 import EStyleSheet from 'react-native-extended-stylesheet';
 import {Provider} from 'react-redux';
+import {PersistGate} from 'redux-persist/integration/react';
 
 import ErrorBoundary from './components/ErrorBoundary';
 import AppNavigation from './navigation';
-import store from './redux';
+import {store, persistor} from './redux';
 import setI18nConfig from './i18n';
 
 import light from './redux/themes/mode/light';
@@ -43,7 +44,9 @@ class App extends Component {
     return !loading ? (
       <Provider store={store}>
         <ErrorBoundary>
-          <AppNavigation />
+          <PersistGate loading={null} persistor={persistor}>
+            <AppNavigation />
+          </PersistGate>
         </ErrorBoundary>
       </Provider>
     ) : (

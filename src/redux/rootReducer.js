@@ -1,4 +1,6 @@
 import {combineReducers} from 'redux';
+import AsyncStorage from '@react-native-community/async-storage';
+import {persistReducer} from 'redux-persist';
 
 import authReducer from './auth';
 import catalogReducer from './catalog';
@@ -14,4 +16,11 @@ const rootReducer = combineReducers({
   filters: filtersReducer,
 });
 
-export default rootReducer;
+const persistConfig = {
+  key: 'root',
+  whitelist: ['auth', 'filter'],
+  blacklist: ['catalog', 'error', 'theme'],
+  storage: AsyncStorage,
+};
+
+export default persistReducer(persistConfig, rootReducer);
