@@ -3,9 +3,13 @@ import * as types from './types';
 const DEF_STRUCTURE = {id: null, name: null};
 
 const initState = {
-  booksWritten: DEF_STRUCTURE,
+  booksWrittenFor: DEF_STRUCTURE,
   protagonist: DEF_STRUCTURE,
   pointOfView: DEF_STRUCTURE,
+  tense: DEF_STRUCTURE,
+  violence: DEF_STRUCTURE,
+  explicit: DEF_STRUCTURE,
+  sexScenes: DEF_STRUCTURE,
 };
 
 const filtersReducer = (state = initState, action) => {
