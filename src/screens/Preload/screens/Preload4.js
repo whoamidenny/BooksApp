@@ -8,9 +8,9 @@ import styles from '../styles';
 
 export default function Preload({navigation}) {
   const choices = [
-    {id: 0, title: 'Past tense: She ran to the store'},
-    {id: 1, title: 'Present tense: She runs to the store'},
-    {id: 2, title: 'Future tense: She will run to the store'},
+    {id: 0, name: 'Past tense: She ran to the store'},
+    {id: 1, name: 'Present tense: She runs to the store'},
+    {id: 2, name: 'Future tense: She will run to the store'},
   ];
 
   const onPressNext = () => {

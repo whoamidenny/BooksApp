@@ -9,10 +9,10 @@ import {scaledSize} from '../../../styles';
 
 export default function Preload({navigation}) {
   const choices = [
-    {id: 0, title: 'First (I did this)'},
-    {id: 1, title: 'Second (You did this)'},
-    {id: 2, title: 'Third-Limited (They did this)'},
-    {id: 3, title: 'Third-Omniscient (They didn’t know this)'},
+    {id: 0, name: 'First (I did this)'},
+    {id: 1, name: 'Second (You did this)'},
+    {id: 2, name: 'Third-Limited (They did this)'},
+    {id: 3, name: 'Third-Omniscient (They didn’t know this)'},
   ];
 
   const onPressNext = () => {
