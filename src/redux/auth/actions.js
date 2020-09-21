@@ -41,6 +41,7 @@ export const onSignIn = (data) => (dispatch) => {
   API.post('/authentication_token', data)
     .then((response) => {
       dispatch(setAuthValue('user', response.data));
+      setToken(response.data.token);
     })
     .then(() => {
       dispatch(errorActions.changeFieldInStore('loading', false));

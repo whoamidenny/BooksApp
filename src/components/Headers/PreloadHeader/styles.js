@@ -21,6 +21,17 @@ const styles = EStyleSheet.create({
     textAlign: 'center',
     color: '$questionText',
   },
+  topProgressContainer: {
+    paddingHorizontal: scaledSize(80),
+    alignItems: 'center',
+    justifyContent: 'center',
+    height: scaledSize(120),
+  },
+  percentageTextStyle: {
+    fontFamily: fonts.circeRegular,
+    fontSize: 14,
+    textAlign: 'center',
+  },
 });
 
 export default styles;

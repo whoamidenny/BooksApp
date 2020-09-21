@@ -9,38 +9,17 @@ export const setCatalogValue = (field, value) => ({
 });
 
 export const getCategories = () => (dispatch) => {
-  dispatch(setCatalogValue('loading', true));
-
   API.get('/api/categories')
-    .then((response) => {
-      console.log(response);
-      if (response.status === 200) {
-        dispatch(setCatalogValue('categories', response.data));
-        dispatch(setCatalogValue('loading', false));
-      }
-    })
-    .catch((error) => {
-      dispatch(setCatalogValue('loading', false));
-      dispatch(errorActions.setMessage('error', error.response.data));
-    });
+    .then((response) => console.log(response))
+    .catch((error) => console.log(error));
 };
 
 export const getGenres = () => (dispatch) => {
-  dispatch(setCatalogValue('loading', true));
-
   API.get('/api/genres')
-    .then((response) => {
-      console.log(response);
-      if (response.status === 200) {
-        dispatch(setCatalogValue('genres', response.data));
-        dispatch(setCatalogValue('loading', false));
-      }
-    })
-    .catch((error) => {
-      dispatch(setCatalogValue('loading', false));
-      dispatch(errorActions.setMessage('error', error.response.data));
-    });
+    .then((response) => console.log(response))
+    .catch((error) => console.log(error));
 };
+
 export const getAuthors = () => (dispatch) => {
   dispatch(setCatalogValue('loading', true));
 

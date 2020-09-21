@@ -1,8 +1,8 @@
 import reducer from './reducer';
 
-import filtersActions from './actions';
-import filtersTypes from './types';
-import filtersSelectors from './selectors';
+import * as filtersActions from './actions';
+import * as filtersTypes from './types';
+import * as filtersSelectors from './selectors';
 
 export {filtersActions, filtersTypes, filtersSelectors};
 

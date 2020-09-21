@@ -5,23 +5,22 @@ import QuestionCheckBox from '../../../components/CheckBoxes/QuestionCheckBox';
 import {DefaultButton} from '../../../components/Buttons';
 
 import styles from '../styles';
-import {scaledSize} from '../../../styles';
 
 export default function Preload({navigation}) {
   const choices = [
-    {id: 0, title: 'First (I did this)'},
-    {id: 1, title: 'Second (You did this)'},
-    {id: 2, title: 'Third-Limited (They did this)'},
-    {id: 3, title: 'Third-Omniscient (They didn’t know this)'},
+    {id: 0, title: 'Yes'},
+    {id: 1, title: 'No'},
   ];
 
   const onPressNext = () => {
-    navigation.navigate('Preload4');
+    navigation.navigate('Preload7');
   };
 
   return (
     <View style={styles.renderScreenContainer}>
-      <Text style={styles.question}>Which Point of View do you prefer:</Text>
+      <Text style={styles.question}>
+        Are you okay with explicit language in books?
+      </Text>
       <View>
         <FlatList
           data={choices}
