@@ -36,3 +36,8 @@ export const selectSexScenes = createSelector(
   [getFilterState],
   (filterState) => filterState.sexScenes,
 );
+
+export const selectFilterGenres = createSelector(
+  [getFilterState],
+  (filterState) => filterState.genres,
+);

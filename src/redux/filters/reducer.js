@@ -1,6 +1,7 @@
 import * as types from './types';
 
 const DEF_STRUCTURE = {id: null, name: null};
+const DEF_ARRAY = [];
 
 const initState = {
   booksWrittenFor: DEF_STRUCTURE,
@@ -10,6 +11,7 @@ const initState = {
   violence: DEF_STRUCTURE,
   explicit: DEF_STRUCTURE,
   sexScenes: DEF_STRUCTURE,
+  genres: DEF_ARRAY,
 };
 
 const filtersReducer = (state = initState, action) => {

@@ -1,6 +1,7 @@
 import * as types from './types';
 import API from '../../api';
 import {errorActions} from '../error';
+import {decodeErrorResponse} from '../../utils';
 
 export const setCatalogValue = (field, value) => ({
   type: types.CHANGE_FIELD_IN_STORE,
@@ -8,47 +9,32 @@ export const setCatalogValue = (field, value) => ({
   value,
 });
 
-export const getCategories = () => (dispatch) => {
-  API.get('/api/categories')
-    .then((response) => console.log(response))
-    .catch((error) => console.log(error));
-};
-
 export const getGenres = () => (dispatch) => {
   API.get('/api/genres')
-    .then((response) => console.log(response))
-    .catch((error) => console.log(error));
-};
-
-export const getAuthors = () => (dispatch) => {
-  dispatch(setCatalogValue('loading', true));
-
-  API.get('/api/authors')
     .then((response) => {
-      console.log(response);
-      if (response.status === 200) {
-        dispatch(setCatalogValue('authors', response.data));
-        dispatch(setCatalogValue('loading', false));
-      }
+      dispatch(setCatalogValue('genres', response.data));
     })
     .catch((error) => {
-      dispatch(setCatalogValue('loading', false));
-      dispatch(errorActions.setMessage('error', error.response.data));
+      dispatch(errorActions.setMessage('error', decodeErrorResponse(error)));
     });
 };
-export const getBooks = () => (dispatch) => {
-  dispatch(setCatalogValue('loading', true));
 
-  API.get('/api/books')
+export const getCategories = () => (dispatch) => {
+  API.get('/api/categories')
     .then((response) => {
-      console.log(response);
-      if (response.status === 200) {
-        dispatch(setCatalogValue('books', response.data));
-        dispatch(setCatalogValue('loading', false));
-      }
+      dispatch(setCatalogValue('categories', response.data));
     })
     .catch((error) => {
-      dispatch(setCatalogValue('loading', false));
-      dispatch(errorActions.setMessage('error', error.response.data));
+      dispatch(errorActions.setMessage('error', decodeErrorResponse(error)));
+    });
+};
+
+export const getBooks = () => (dispatch) => {
+  API.get('/api/books')
+    .then((response) => {
+      dispatch(setCatalogValue('books', response.data));
+    })
+    .catch((error) => {
+      dispatch(errorActions.setMessage('error', decodeErrorResponse(error)));
     });
 };

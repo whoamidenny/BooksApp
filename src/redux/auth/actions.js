@@ -40,7 +40,8 @@ export const onSignIn = (data) => (dispatch) => {
 
   API.post('/authentication_token', data)
     .then((response) => {
-      dispatch(setAuthValue('user', response.data));
+      dispatch(setAuthValue('user', {...response.data, email: data.email}));
+
       setToken(response.data.token);
     })
     .then(() => {
@@ -55,3 +56,11 @@ export const onSignIn = (data) => (dispatch) => {
 };
 
 export const onLogout = () => (dispatch) => {};
+
+export const getUser = () => (dispatch, getState) => {
+  const {user} = getState().auth;
+
+  API.get('/api/users', {email: user.email})
+    .then((response) => console.log(response))
+    .catch((error) => console.log(error));
+};
