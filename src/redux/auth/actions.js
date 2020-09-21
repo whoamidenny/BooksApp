@@ -57,10 +57,15 @@ export const onSignIn = (data) => (dispatch) => {
 
 export const onLogout = () => (dispatch) => {};
 
-export const getUser = () => (dispatch, getState) => {
+export const getUserProfile = () => (dispatch, getState) => {
   const {user} = getState().auth;
 
   API.get('/api/users', {email: user.email})
-    .then((response) => console.log(response))
-    .catch((error) => console.log(error));
+    .then((response) => {
+      const data = response.data.find((iUser) => user.email === iUser.email);
+      dispatch(setAuthValue('userProfile', data));
+    })
+    .catch((error) => {
+      dispatch(errorActions.setMessage('error', decodeErrorMessage(error)));
+    });
 };

@@ -4,6 +4,10 @@ const initState = {
   user: {},
   isOnboardingComplete: false,
   stayLogged: false,
+  userProfile: {
+    name: '',
+    email: '',
+  },
 };
 
 const authReducer = (state = initState, action) => {

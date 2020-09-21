@@ -20,6 +20,10 @@ import {BaseBlock, MainBlock} from '../../components/Blocks';
 import styles from './styles';
 import {scaledSize} from '../../styles';
 
+import {getUserProfile} from '../../redux/auth/actions';
+import {authSelectors} from '../../redux/auth';
+import Loader from '../../components/Loader';
+
 const ProfileInput = ({...props}) => (
   <Input
     {...props}
@@ -34,9 +38,11 @@ const ProfileInput = ({...props}) => (
 function Profile({navigation}) {
   const dispatch = useDispatch();
   const theme = useSelector((state) => state.theme);
+  const uName = useSelector((state) => authSelectors.selectUsername(state));
+  const uEmail = useSelector((state) => authSelectors.selectEmail(state));
 
-  const [fullname, setFullName] = useState('John Doe');
-  const [email, setEmail] = useState('johndoe@gmail.com');
+  const [fullname, setFullName] = useState('');
+  const [email, setEmail] = useState('');
   const [password, setPassword] = useState('123456778900');
 
   const [isActive, setDarkThemeActive] = useState(false);
@@ -46,7 +52,14 @@ function Profile({navigation}) {
     const themeName = theme.$theme;
 
     setDarkThemeActive(themeName === 'light' ? false : true);
+
+    dispatch(getUserProfile());
   }, []);
+
+  useEffect(() => {
+    setFullName(uName);
+    setEmail(uEmail);
+  }, [uName, uEmail]);
 
   function onChangeTheme() {
     const themeName = theme.$theme;
@@ -74,17 +87,7 @@ function Profile({navigation}) {
     }, 1500);
   }
 
-  if (loading) {
-    return (
-      <MainBlock>
-        <View style={{flex: 1, justifyContent: 'center'}}>
-          <ActivityIndicator size="large" color={'#0b1e35'} />
-        </View>
-      </MainBlock>
-    );
-  }
-
-  return (
+  return !loading ? (
     <BaseBlock>
       <StatusBar
         barStyle={theme.$theme === 'light' ? 'dark-content' : 'light-content'}
@@ -100,25 +103,28 @@ function Profile({navigation}) {
             containerStyle={{marginRight: scaledSize(71)}}
           />
           <View style={{flex: 1}}>
-            <Text style={styles.username}>John Doe</Text>
+            <Text style={styles.username}>{uName}</Text>
             <Text style={styles.books}>11 books read</Text>
           </View>
         </View>
 
         <ProfileInput
           label="Full name"
+          editable={false}
           value={fullname}
           onChangeText={(text) => setFullName(text)}
         />
 
         <ProfileInput
           label="Email"
+          editable={false}
           value={email}
           onChangeText={(text) => setEmail(text)}
         />
 
         <ProfileInput
           secureTextEntry
+          editable={false}
           label="Password"
           value={password}
           onChangeText={(text) => setPassword(text)}
@@ -138,6 +144,8 @@ function Profile({navigation}) {
         </View>
       </KeyboardAwareScrollView>
     </BaseBlock>
+  ) : (
+    <Loader />
   );
 }
 
