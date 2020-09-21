@@ -9,7 +9,8 @@ import SignUp from '../screens/Auth/SignUp';
 import {scaledSize} from '../styles';
 import ForgetPassword from '../screens/Auth/ForgetPassword';
 import Onboarding from '../screens/Onboarding';
-import Preload from '../screens/Preload';
+import PreloadTab from './PreloadTab';
+
 import globalStyles from '../styles/globalStyles';
 
 const Stack = createStackNavigator();
@@ -53,9 +54,10 @@ export default function AuthStack() {
       />
       <Stack.Screen
         name="Preload"
-        component={Preload}
+        component={PreloadTab}
         options={({navigation}) => {
           return {
+            gestureEnabled: false,
             headerRight: () => (
               <View style={{marginRight: scaledSize(60)}}>
                 <Text

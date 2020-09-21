@@ -43,7 +43,7 @@ export default EStyleSheet.create({
     backgroundColor: '$buttonDiscoverBackground',
   },
   renderScreenContainer: {
-    width: Dimensions.get('window').width,
+    flex: 1,
     paddingHorizontal: scaledSize(80),
   },
   bottomButtonsContainer: {
