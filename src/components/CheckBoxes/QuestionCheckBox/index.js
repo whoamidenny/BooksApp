@@ -3,7 +3,6 @@ import {CheckBox, Icon} from 'react-native-elements';
 import styles from './styles';
 import {colors} from '../../../constants';
 import {View, Text} from 'react-native';
-import {scaledSize} from '../../../styles';
 
 const QuestionCheckBox = ({
   choice,

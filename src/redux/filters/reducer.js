@@ -1,11 +1,13 @@
 import * as types from './types';
 
 const DEF_STRUCTURE = {id: null, name: null};
+const DEF_ARRAY = [];
 
 const initState = {
   booksWritten: DEF_STRUCTURE,
   protagonist: DEF_STRUCTURE,
   pointOfView: DEF_STRUCTURE,
+  genres: DEF_ARRAY,
 };
 
 const filtersReducer = (state = initState, action) => {

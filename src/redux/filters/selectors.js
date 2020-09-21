@@ -11,3 +11,8 @@ export const selectProtagonist = createSelector(
   [getFilterState],
   (filterState) => filterState.protagonist,
 );
+
+export const selectFilterGenres = createSelector(
+  [getFilterState],
+  (filterState) => filterState.genres,
+);
