@@ -4,6 +4,8 @@ const DEF_STRUCTURE = {id: null, name: null};
 
 const initState = {
   booksWritten: DEF_STRUCTURE,
+  protagonist: DEF_STRUCTURE,
+  pointOfView: DEF_STRUCTURE,
 };
 
 const filtersReducer = (state = initState, action) => {

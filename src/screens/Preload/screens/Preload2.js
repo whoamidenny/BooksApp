@@ -4,11 +4,17 @@ import {View, Text, FlatList} from 'react-native';
 import QuestionCheckBox from '../../../components/CheckBoxes/QuestionCheckBox';
 import {DefaultButton} from '../../../components/Buttons';
 
+import {useSelector, useDispatch} from 'react-redux';
+import {selectProtagonist, filtersActions} from '../../../redux/filters';
+
 import styles from '../styles';
 import {colors} from '../../../constants';
 import {scaledSize} from '../../../styles';
 
 export default function Preload({navigation}) {
+  const protagonist = useSelector((state) => selectProtagonist(state));
+  const dispatch = useDispatch();
+
   const choices = [
     {id: 0, title: 'Men'},
     {id: 1, title: 'Women'},
@@ -21,6 +27,10 @@ export default function Preload({navigation}) {
 
   const onPressDiscover = () => {};
 
+  const onPressItem = (item) => {
+    dispatch(filtersActions.setFilterValue('protagonist', item));
+  };
+
   return (
     <View style={styles.renderScreenContainer}>
       <Text style={styles.question}>
@@ -29,9 +39,16 @@ export default function Preload({navigation}) {
       <View>
         <FlatList
           data={choices}
-          renderItem={(choice) => (
-            <QuestionCheckBox choice={choice} onPress={() => {}} />
-          )}
+          renderItem={(choice) => {
+            const isChecked = protagonist.id === choice.item.id;
+            return (
+              <QuestionCheckBox
+                checked={isChecked}
+                choice={choice}
+                onPress={onPressItem}
+              />
+            );
+          }}
           keyExtractor={(item, index) => index.toString()}
         />
         <View style={styles.bottomContainer}>

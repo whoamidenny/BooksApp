@@ -5,7 +5,13 @@ import {colors} from '../../../constants';
 import {View, Text} from 'react-native';
 import {scaledSize} from '../../../styles';
 
-const QuestionCheckBox = ({choice, onPress, titleStyle, iconStyle}) => (
+const QuestionCheckBox = ({
+  choice,
+  checked,
+  onPress,
+  titleStyle,
+  iconStyle,
+}) => (
   <View style={styles.container}>
     <Text style={[styles.title, titleStyle]}>{choice.item.title}</Text>
     <CheckBox
@@ -19,8 +25,8 @@ const QuestionCheckBox = ({choice, onPress, titleStyle, iconStyle}) => (
         />
       }
       uncheckedIcon={null}
-      checked={choice.item.checked}
-      onPress={() => onPress(choice.item.id)}
+      checked={checked}
+      onPress={() => onPress(choice.item)}
     />
   </View>
 );
