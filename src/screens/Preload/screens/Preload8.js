@@ -21,8 +21,6 @@ export default function Preload() {
   const onSelectElement = (list, element, isSelected) => {
     const array = getFormatedList(list, element, isSelected);
 
-    console.log(array, isSelected);
-
     dispatch(filtersActions.setFilterValue('genres', array));
   };
 

@@ -14,8 +14,8 @@ export default function Preload({navigation}) {
   const dispatch = useDispatch();
 
   const choices = [
-    {id: 0, title: 'Yes'},
-    {id: 1, title: 'No'},
+    {id: 0, name: 'Yes'},
+    {id: 1, name: 'No'},
   ];
 
   const onPressNext = () => {
