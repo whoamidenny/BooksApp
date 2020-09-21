@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 
 import {View, Text, FlatList} from 'react-native';
 
@@ -8,26 +8,42 @@ import styles from './styles';
 import QuestionCheckBox from '../../components/CheckBoxes/QuestionCheckBox';
 import {scaledSize} from '../../styles';
 
+import {selectGenres, catalogActions} from '../../redux/catalog';
+import {selectFilterGenres, filtersActions} from '../../redux/filters';
+import {useDispatch, useSelector} from 'react-redux';
+
+import {getFormattedList, isExistInArray} from '../../utils';
+
 function Filters({navigation}) {
-  const [categories, setCategories] = useState([
-    {id: 0, title: 'Action & Adventure', checked: false},
-    {id: 1, title: 'African American', checked: true},
-    {id: 2, title: 'Alternative History'},
-    {id: 3, title: 'Amish & Mennonite'},
-  ]);
+  const genresList = useSelector((state) => selectGenres(state));
+  const genres = useSelector((state) => selectFilterGenres(state));
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(catalogActions.getGenres());
+  }, []);
+
+  const onSelectElement = (list, element, isSelected) => {
+    const array = getFormattedList(list, element, isSelected);
+
+    dispatch(filtersActions.setFilterValue('genres', array));
+  };
+
   return (
     <View style={styles.container}>
       <FiltersHeader navigation={navigation} />
       <FlatList
-        data={categories}
-        renderItem={(item) => (
-          <QuestionCheckBox
-            choice={item}
-            onPress={() => {}}
-            titleStyle={styles.title}
-            iconStyle={styles.icon}
-          />
-        )}
+        data={genresList}
+        renderItem={(choice) => {
+          const isExist = isExistInArray(genres, choice.item);
+          return (
+            <QuestionCheckBox
+              choice={choice}
+              checked={isExist}
+              onPress={() => onSelectElement(genres, choice.item, isExist)}
+            />
+          );
+        }}
         contentContainerStyle={{padding: scaledSize(80)}}
         keyExtractor={(item, index) => index.toString()}
       />

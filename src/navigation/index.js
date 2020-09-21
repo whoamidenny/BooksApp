@@ -5,7 +5,6 @@ import {NavigationContainer} from '@react-navigation/native';
 
 import AuthStack from './AuthStack';
 import MainBottomNavigation from './MainBottom';
-import {useSelector} from 'react-redux';
 
 const Stack = createStackNavigator();
 

@@ -16,7 +16,7 @@ export const isExistInArray = (list, element) => {
   return isExist === undefined ? false : true;
 };
 
-export const getFormatedList = (list, element, isExist) => {
+export const getFormattedList = (list, element, isExist) => {
   return isExist
     ? list.filter((item) => item.id !== element.id)
     : [...list, element];
