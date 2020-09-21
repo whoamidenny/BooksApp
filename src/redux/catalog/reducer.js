@@ -1,11 +1,8 @@
 import * as types from './types';
 
 const initState = {
-  loading: true,
-  success: false,
   categories: [],
   genres: [],
-  authors: [],
   books: [],
 };
 

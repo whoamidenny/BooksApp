@@ -13,7 +13,7 @@ const QuestionCheckBox = ({
   iconStyle,
 }) => (
   <View style={styles.container}>
-    <Text style={[styles.title, titleStyle]}>{choice.item.title}</Text>
+    <Text style={[styles.title, titleStyle]}>{choice.item.name}</Text>
     <CheckBox
       containerStyle={styles.checkBoxContainerStyle}
       wrapperStyle={[styles.checkBoxWrapperStyle, iconStyle]}

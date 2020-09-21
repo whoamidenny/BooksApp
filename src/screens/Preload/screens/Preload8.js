@@ -3,17 +3,18 @@ import {View, Text, FlatList} from 'react-native';
 
 import QuestionCheckBox from '../../../components/CheckBoxes/QuestionCheckBox';
 
-import {useDispatch} from 'react-redux';
+import {useDispatch, useSelector} from 'react-redux';
+import {catalogActions, selectGenres} from '../../../redux/catalog';
 
 import styles from '../styles';
 
 export default function Preload() {
-  const choices = [
-    {id: 0, title: 'Action & Adventure'},
-    {id: 1, title: 'African American'},
-    {id: 2, title: 'Alternative History'},
-    {id: 3, title: 'Amish & Mennonite'},
-  ];
+  const dispatch = useDispatch();
+  const genres = useSelector((state) => selectGenres(state));
+
+  useEffect(() => dispatch(catalogActions.getGenres()), []);
+
+  console.log(genres);
 
   return (
     <View style={styles.renderScreenContainer}>
@@ -21,7 +22,7 @@ export default function Preload() {
         Please choose 10 of the following Genres you prefer to read:
       </Text>
       <FlatList
-        data={choices}
+        data={genres}
         renderItem={(choice) => (
           <QuestionCheckBox choice={choice} onPress={() => {}} />
         )}
