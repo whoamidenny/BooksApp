@@ -37,6 +37,7 @@ export const getBooks = () => (dispatch) => {
       dispatch(errorActions.changeFieldInStore('loading', false));
     })
     .catch((error) => {
+      console.log(error.response);
       dispatch(errorActions.changeFieldInStore('loading', false));
       dispatch(errorActions.setMessage('error', decodeErrorMessage(error)));
     });

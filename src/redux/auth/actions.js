@@ -62,10 +62,12 @@ export const getUserProfile = () => (dispatch, getState) => {
 
   API.get('/api/users', {email: user.email})
     .then((response) => {
+      console.log(response);
       const data = response.data.find((iUser) => user.email === iUser.email);
       dispatch(setAuthValue('userProfile', data));
     })
     .catch((error) => {
+      console.log(error.response);
       dispatch(errorActions.setMessage('error', decodeErrorMessage(error)));
     });
 };

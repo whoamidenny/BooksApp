@@ -27,8 +27,8 @@ function SignIn({navigation}) {
     authSelectors.selectStayLogged(state),
   );
 
-  const [email, setEmail] = useState('arthur@fulcrum.rocks');
-  const [password, setPassword] = useState('Fulcrum123~');
+  const [email, setEmail] = useState(''); //useState('arthur@fulcrum.rocks');
+  const [password, setPassword] = useState('');
 
   const onPressForgetPassword = () => {
     navigation.navigate('ForgetPassword');
