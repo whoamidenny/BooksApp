@@ -28,7 +28,7 @@ export default function PreloadHeader({title, subtitle, ...props}) {
             color={colors.progressBarColor}
           />
           <Text style={styles.percentageTextStyle}>
-            ({Math.round(((index + 1) / 8) * 100)}% ready)
+            {`${Math.round(((index + 1) / 8) * 100)}% ready`}
           </Text>
         </View>
       )}

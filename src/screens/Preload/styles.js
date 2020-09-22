@@ -72,7 +72,7 @@ export default EStyleSheet.create({
   },
   bottomAbsoluteContainer: {
     position: 'absolute',
-    bottom: 0,
+    bottom: 20,
     left: scaledSize(80),
     right: scaledSize(80),
   },

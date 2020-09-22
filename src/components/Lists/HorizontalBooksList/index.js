@@ -1,5 +1,7 @@
 import React, {useState} from 'react';
 import {View, Text, FlatList, Image, TouchableOpacity} from 'react-native';
+import {useSelector} from 'react-redux';
+import {selectBooks} from '../../../redux/catalog';
 
 import styles from './styles';
 
@@ -13,23 +15,26 @@ const RenderItem = ({item, index, onPress}) => {
       <Image
         style={styles.imageStyle}
         source={{
-          uri:
-            'https://images-na.ssl-images-amazon.com/images/I/91RuWUOAhbL.jpg',
+          uri: `https://popcorn-books.xyz:8000/${item.imagePath}`,
         }}
+        resizeMode="contain"
       />
-      <Text style={styles.bookNameStyle}>Laborum essepter</Text>
-      <Text style={styles.authorNameStyle}>George Perry</Text>
+      <Text style={styles.bookNameStyle}>
+        {item.title.length > 20 ? `${item.title.slice(0, 20)}...` : item.title}
+      </Text>
+      <Text style={styles.authorNameStyle}>{item.additionalAuthor}</Text>
     </TouchableOpacity>
   );
 };
 
 function HorizontalBooksList(props) {
+  const books = useSelector((state) => selectBooks(state));
   return (
     <View style={styles.container}>
       <Text style={styles.titleStyle}>Recommended for you</Text>
       <FlatList
         horizontal
-        data={list}
+        data={books}
         keyExtractor={(item, index) => index.toString()}
         showsHorizontalScrollIndicator={false}
         renderItem={({item, index}) => (
