@@ -5,7 +5,7 @@ import {scaledSize} from '../../../styles';
 
 const styles = EStyleSheet.create({
   container: {
-    paddingTop: 20,
+    paddingTop: 10,
     paddingHorizontal: 20,
     backgroundColor: '$background',
   },
@@ -31,6 +31,7 @@ const styles = EStyleSheet.create({
     fontFamily: fonts.circeRegular,
     fontSize: 14,
     textAlign: 'center',
+    marginTop: 10,
   },
 });
 
