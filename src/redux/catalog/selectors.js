@@ -16,3 +16,8 @@ export const selectBooks = createSelector(
   [getCatalogsState],
   (catalogState) => catalogState.books,
 );
+
+export const selectCurrentBookData = createSelector(
+  [getCatalogsState],
+  (catalogState) => catalogState.currentBookData,
+);

@@ -41,3 +41,16 @@ export const getBooks = () => (dispatch) => {
       dispatch(errorActions.setMessage('error', decodeErrorMessage(error)));
     });
 };
+
+export const getBook = (bookId) => (dispatch) => {
+  dispatch(errorActions.changeFieldInStore('loading', true));
+  API.get(`/api/books${bookId}`)
+    .then((response) => {
+      dispatch(setCatalogValue('currentBookData', response.data));
+      dispatch(errorActions.changeFieldInStore('loading', false));
+    })
+    .catch((error) => {
+      dispatch(errorActions.changeFieldInStore('loading', false));
+      dispatch(errorActions.setMessage('error', decodeErrorMessage(error)));
+    });
+};

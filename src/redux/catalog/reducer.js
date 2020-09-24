@@ -4,6 +4,7 @@ const initState = {
   categories: [],
   genres: [],
   books: [],
+  currentBookData: null,
 };
 
 const catalogReducer = (state = initState, action) => {
