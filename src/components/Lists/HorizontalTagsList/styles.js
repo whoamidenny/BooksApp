@@ -5,11 +5,11 @@ import {fonts} from '../../../constants';
 export default EStyleSheet.create({
   tagItemContainer: {
     marginLeft: scaledSize(50),
-    width: scaledSize(225),
     height: scaledSize(90),
     alignItems: 'center',
     justifyContent: 'center',
     borderRadius: scaledSize(45),
+    paddingHorizontal: scaledSize(20),
   },
   firstTagItemContainer: {
     marginRight: scaledSize(50),

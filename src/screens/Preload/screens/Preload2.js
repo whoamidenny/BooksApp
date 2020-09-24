@@ -16,9 +16,9 @@ export default function Preload({navigation}) {
   const dispatch = useDispatch();
 
   const choices = [
-    {id: 0, name: 'Men'},
-    {id: 1, name: 'Women'},
-    {id: 2, name: 'Both (Multiple protagonists)'},
+    {id: 0, name: 'Men', value: 0},
+    {id: 1, name: 'Women', value: 1},
+    {id: 2, name: 'Both (Multiple protagonists)', value: 2},
   ];
 
   const onPressNext = () => {

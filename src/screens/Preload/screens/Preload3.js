@@ -15,10 +15,10 @@ export default function Preload({navigation}) {
   const dispatch = useDispatch();
 
   const choices = [
-    {id: 0, name: 'First (I did this)'},
-    {id: 1, name: 'Second (You did this)'},
-    {id: 2, name: 'Third-Limited (They did this)'},
-    {id: 3, name: 'Third-Omniscient (They didn’t know this)'},
+    {id: 0, name: 'First (I did this)', value: 0},
+    {id: 1, name: 'Second (You did this)', value: 1},
+    {id: 2, name: 'Third-Limited (They did this)', value: 2},
+    {id: 3, name: 'Third-Omniscient (They didn’t know this)', value: 3},
   ];
 
   const onPressNext = () => {
@@ -26,7 +26,7 @@ export default function Preload({navigation}) {
   };
 
   const onPressItem = (item) => {
-    dispatch(filtersActions.setFilterValue('pointOfView', item));
+    dispatch(filtersActions.setFilterValue('view_point', item));
   };
 
   return (

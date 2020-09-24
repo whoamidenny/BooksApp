@@ -17,6 +17,9 @@ export default function Preload({navigation}) {
     {id: 0, name: 'Men'},
     {id: 1, name: 'Women'},
     {id: 2, name: 'Both'},
+    // {id: 0, name: 'Men', value: 0},
+    // {id: 1, name: 'Women', value: 1},
+    // {id: 2, name: 'Both', value: 2},
   ];
 
   const onPressNext = () => {
@@ -24,7 +27,7 @@ export default function Preload({navigation}) {
   };
 
   const onPressItem = (item) => {
-    dispatch(filtersActions.setFilterValue('booksWrittenFor', item));
+    dispatch(filtersActions.setFilterValue('books_written_for', item));
   };
 
   return (

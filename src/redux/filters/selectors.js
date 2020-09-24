@@ -4,7 +4,7 @@ export const getFilterState = (state) => state.filters;
 
 export const selectBooksWrittenFor = createSelector(
   [getFilterState],
-  (filterState) => filterState.booksWrittenFor,
+  (filterState) => filterState.books_written_for,
 );
 
 export const selectProtagonist = createSelector(
@@ -14,7 +14,7 @@ export const selectProtagonist = createSelector(
 
 export const selectPointOfView = createSelector(
   [getFilterState],
-  (filterState) => filterState.pointOfView,
+  (filterState) => filterState.view_point,
 );
 
 export const selectTense = createSelector(
@@ -24,17 +24,17 @@ export const selectTense = createSelector(
 
 export const selectViolence = createSelector(
   [getFilterState],
-  (filterState) => filterState.violence,
+  (filterState) => filterState.has_violence,
 );
 
 export const selectExplicit = createSelector(
   [getFilterState],
-  (filterState) => filterState.explicit,
+  (filterState) => filterState.has_explicit_language,
 );
 
 export const selectSexScenes = createSelector(
   [getFilterState],
-  (filterState) => filterState.sexScenes,
+  (filterState) => filterState.has_sex_scene,
 );
 
 export const selectFilterGenres = createSelector(

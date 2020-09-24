@@ -4,13 +4,13 @@ const DEF_STRUCTURE = {id: null, name: null};
 const DEF_ARRAY = [];
 
 const initState = {
-  booksWrittenFor: DEF_STRUCTURE,
+  books_written_for: DEF_STRUCTURE,
   protagonist: DEF_STRUCTURE,
-  pointOfView: DEF_STRUCTURE,
+  view_point: DEF_STRUCTURE,
   tense: DEF_STRUCTURE,
-  violence: DEF_STRUCTURE,
-  explicit: DEF_STRUCTURE,
-  sexScenes: DEF_STRUCTURE,
+  has_violence: DEF_STRUCTURE,
+  has_explicit_language: DEF_STRUCTURE,
+  has_sex_scene: DEF_STRUCTURE,
   genres: DEF_ARRAY,
 };
 

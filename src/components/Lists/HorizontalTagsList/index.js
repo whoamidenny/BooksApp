@@ -13,47 +13,25 @@ const RenderTagItem = ({item, index, onPressTag}) => {
           : styles.tagItemContainer
       }>
       <Text style={!item.selected ? styles.category : styles.categorySelected}>
-        {item.title}
+        {item.name}
       </Text>
     </TouchableOpacity>
   );
 };
 
 function HorizontalTagsList(props) {
-  const [tagsList, setTagsList] = useState([
-    {id: 0, title: 'Thrillers'},
-    {id: 1, title: 'Thrillers', selected: true},
-    {id: 2, title: 'Thrillers'},
-    {id: 3, title: 'Thrillers'},
-    {id: 4, title: 'Thrillers'},
-  ]);
-  const onPressTag = (index) => {
-    const newSelected = tagsList.map((item) => {
-      if (item.id === index) {
-        return {
-          ...item,
-          selected: !item.selected,
-        };
-      } else {
-        return {
-          ...item,
-        };
-      }
-    });
-    setTagsList(newSelected);
-  };
   return (
     <View style={styles.tagsContainer}>
       <FlatList
         horizontal
-        data={tagsList}
+        data={props.data}
         keyExtractor={(item, index) => index.toString()}
         showsHorizontalScrollIndicator={false}
         renderItem={({item, index}) => (
           <RenderTagItem
             item={item}
             index={index}
-            onPressTag={() => onPressTag(index)}
+            onPressTag={() => props.onPress(index)}
           />
         )}
       />

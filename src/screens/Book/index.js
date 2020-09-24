@@ -7,6 +7,7 @@ import {
   ScrollView,
   TouchableOpacity,
   StatusBar,
+  Linking,
 } from 'react-native';
 import * as Progress from 'react-native-progress';
 import {BaseBlock} from '../../components/Blocks';
@@ -42,6 +43,12 @@ function Book({navigation, route}) {
   useEffect(() => {
     findCurrentBookGenres();
   }, []);
+
+  const onPressRead = () => {
+    Linking.openURL(
+      `${staticStrings.apiEndpoint + '/' + currentBookData.bookFilePath}`,
+    );
+  };
 
   return (
     <BaseBlock>
@@ -101,7 +108,7 @@ function Book({navigation, route}) {
               <WrapTagsList data={currentBookGenres} />
             </View>
             <View>
-              <SmallButton title="Read" />
+              <SmallButton title="Read" onPress={onPressRead} />
             </View>
           </View>
         </View>

@@ -14,8 +14,8 @@ export default function Preload({navigation}) {
   const dispatch = useDispatch();
 
   const choices = [
-    {id: 0, name: 'Yes'},
-    {id: 1, name: 'No'},
+    {id: 0, name: 'Yes', value: true},
+    {id: 1, name: 'No', value: false},
   ];
 
   const onPressNext = () => {
@@ -23,7 +23,7 @@ export default function Preload({navigation}) {
   };
 
   const onPressItem = (item) => {
-    dispatch(filtersActions.setFilterValue('violence', item));
+    dispatch(filtersActions.setFilterValue('has_violence', item));
   };
 
   return (

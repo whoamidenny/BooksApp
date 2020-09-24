@@ -29,14 +29,16 @@ export const getCategories = () => (dispatch) => {
     });
 };
 
-export const getBooks = () => (dispatch) => {
+export const getBooks = (params) => (dispatch) => {
   dispatch(errorActions.changeFieldInStore('loading', true));
-  API.get('/api/books')
+
+  API.get(`/api/books${params}`)
     .then((response) => {
       dispatch(setCatalogValue('books', response.data));
       dispatch(errorActions.changeFieldInStore('loading', false));
     })
     .catch((error) => {
+      console.log('ERROR getBooks', error);
       dispatch(errorActions.changeFieldInStore('loading', false));
       dispatch(errorActions.setMessage('error', decodeErrorMessage(error)));
     });
