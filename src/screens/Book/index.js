@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 
 import {
   View,
@@ -17,12 +17,32 @@ import styles from './styles';
 import {DefaultHeader} from '../../components/Headers';
 import {scaledSize} from '../../styles';
 import {Icon} from 'react-native-elements';
-import {colors} from '../../constants';
-import {useSelector} from 'react-redux';
+import {colors, staticStrings} from '../../constants';
+import {useSelector, useDispatch} from 'react-redux';
+import {selectBooks, selectGenres} from '../../redux/catalog';
 
-function Book({navigation}) {
+function Book({navigation, route}) {
   const [progress, setProgress] = useState(0.4);
+  const {bookIndex} = route.params;
+  const dispatch = useDispatch();
+
   const theme = useSelector((state) => state.theme);
+  const books = useSelector((state) => selectBooks(state));
+  const genres = useSelector((state) => selectGenres(state));
+
+  const currentBookData = books[bookIndex];
+  const currentBookGenres = [];
+
+  const findCurrentBookGenres = () => {
+    currentBookData.genres.forEach((item) => {
+      const res = genres.find((genre) => genre.id === item);
+      currentBookGenres.push(res);
+    });
+  };
+  useEffect(() => {
+    findCurrentBookGenres();
+  }, []);
+
   return (
     <BaseBlock>
       <StatusBar
@@ -35,17 +55,20 @@ function Book({navigation}) {
           <Image
             style={styles.imageBookStyle}
             source={{
-              uri:
-                'https://images-na.ssl-images-amazon.com/images/I/91RuWUOAhbL.jpg',
+              uri: `${
+                staticStrings.apiEndpoint + '/' + currentBookData.imagePath
+              }`,
             }}
           />
           <View style={{flex: 1}}>
             <View style={styles.blockContainerStyle}>
               <View>
-                <Text style={styles.bookNameStyle}>Comodo exepturi</Text>
+                <Text style={styles.bookNameStyle}>
+                  {currentBookData.title}
+                </Text>
                 <TouchableOpacity onPress={() => navigation.navigate('Author')}>
                   <Text style={styles.bookAuthorNameStyle}>
-                    by Oliver Knight
+                    by {currentBookData.additionalAuthor}
                   </Text>
                 </TouchableOpacity>
               </View>
@@ -72,10 +95,10 @@ function Book({navigation}) {
                 size={scaledSize(40)}
                 color={theme.$label}
               />
-              <Text style={styles.views}>10k</Text>
+              <Text style={styles.views}>{currentBookData.bookAuditory}</Text>
             </View>
             <View style={styles.tagsContainer}>
-              <WrapTagsList />
+              <WrapTagsList data={currentBookGenres} />
             </View>
             <View>
               <SmallButton title="Read" />
@@ -85,20 +108,13 @@ function Book({navigation}) {
         <View style={styles.introductionContainer}>
           <Text style={styles.introductionTitleStyle}>Introduction</Text>
           <Text style={styles.introductionTextStyle}>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
-            ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-            aliquip ex ea commodo consequat. Duis aute irure dolor in
-            reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-            pariatur. Excepteur occaecat cupidatat non proident, sunt in culpa
-            qui officia deserunt mollit anim id est laborum. Nemo enim ipsam
-            voluptatem, quia voluptas sit, aspernatur aut odit aut fugit.
+            {currentBookData.description}
           </Text>
         </View>
 
         <HorizontalSmallBooksList
           details
-          title="Other books by Oliver Knight"
+          title={`Other books by ${currentBookData.additionalAuthor}`}
         />
       </ScrollView>
     </BaseBlock>

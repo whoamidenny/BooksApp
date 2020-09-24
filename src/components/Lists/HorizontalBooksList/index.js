@@ -5,8 +5,6 @@ import {selectBooks} from '../../../redux/catalog';
 
 import styles from './styles';
 
-const list = [1, 2, 3, 4, 5];
-
 const RenderItem = ({item, index, onPress}) => {
   return (
     <TouchableOpacity
@@ -38,7 +36,11 @@ function HorizontalBooksList(props) {
         keyExtractor={(item, index) => index.toString()}
         showsHorizontalScrollIndicator={false}
         renderItem={({item, index}) => (
-          <RenderItem item={item} index={index} onPress={props.onPressBook} />
+          <RenderItem
+            item={item}
+            index={index}
+            onPress={() => props.onPressBook(index)}
+          />
         )}
       />
     </View>

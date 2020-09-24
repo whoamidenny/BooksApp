@@ -37,8 +37,8 @@ function Home({navigation}) {
     return unsubscribe;
   }, [navigation]);
 
-  const onPressBook = () => {
-    navigation.navigate('Book');
+  const onPressBook = (index) => {
+    navigation.navigate('Book', {bookIndex: index});
   };
 
   return !loading ? (
@@ -47,7 +47,7 @@ function Home({navigation}) {
       <ScrollView
         showsVerticalScrollIndicator={false}
         style={styles.contentContainerStyle}>
-        <HorizontalBooksList onPressBook={onPressBook} />
+        <HorizontalBooksList onPressBook={(index) => onPressBook(index)} />
         <HorizontalTagsList />
         <HorizontalSmallBooksList />
       </ScrollView>
