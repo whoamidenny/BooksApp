@@ -40,6 +40,9 @@ function Profile({navigation}) {
   const theme = useSelector((state) => state.theme);
   const uName = useSelector((state) => authSelectors.selectUsername(state));
   const uEmail = useSelector((state) => authSelectors.selectEmail(state));
+  const userProfile = useSelector((state) =>
+    authSelectors.selectUserProfileData(state),
+  );
 
   const [fullname, setFullName] = useState('');
   const [email, setEmail] = useState('');
@@ -97,7 +100,11 @@ function Profile({navigation}) {
       <KeyboardAwareScrollView contentContainerStyle={styles.containerScroll}>
         <View style={styles.profileContainer}>
           <Avatar
-            source={require('../../assets/images/avatar.png')}
+            source={
+              userProfile.thumbnail
+                ? {uri: userProfile.thumbnail}
+                : require('../../assets/images/avatar.png')
+            }
             rounded
             size={scaledSize(151)}
             containerStyle={{marginRight: scaledSize(71)}}

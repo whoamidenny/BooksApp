@@ -37,3 +37,8 @@ export const selectEmail = createSelector(
   [getProfile],
   (profile) => profile.email,
 );
+
+export const selectUserProfileData = createSelector(
+  [getProfile],
+  (profile) => profile,
+);
